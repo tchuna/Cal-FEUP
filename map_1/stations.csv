@@ -1,0 +1,18 @@
+X,Y,osm_id,name,public_transport,railway,ref,highway,covered,light_rail,wheelchair,shelter,bench,mapillary,survey:date
+-8.7040243,41.3004894,5263438050,VC Fashion Outlet / Modivas,stop_position,stop,,,,yes,,,,,
+-8.7039726,41.3005038,5263438049,VC Fashion Outlet / Modivas,stop_position,stop,,,,yes,,,,,
+-8.6795702,41.2702615,3897689883,Vilar de Pinheiro,stop_position,stop,,,,yes,yes,,,,
+-8.6795372,41.2702792,280078082,Vilar de Pinheiro,stop_position,stop,,,,yes,yes,,,,
+-8.6935796,41.2852176,3897689880,Modivas Sul,stop_position,stop,,,,yes,,,,,
+-8.6935424,41.2852319,130216262,Modivas Sul,stop_position,stop,,,,yes,,,,,
+-8.6795003,41.2836408,2116754885,Vilar (Dgauto),platform,,VL1,bus_stop,,,,,,,
+-8.6718699,41.2787709,3379292639,Lameira,platform,,,bus_stop,yes,,,yes,yes,,
+-8.6605397,41.2807912,3385636906,"""Porta do Hora""",platform,,,bus_stop,,,,,,,
+-8.6992863,41.2936416,3897689879,Modivas Centro,stop_position,stop,,,,yes,yes,,,,
+-8.699249,41.2936559,280078049,Modivas Centro,stop_position,stop,,,,yes,yes,,,,
+-8.6910545,41.2945369,2116814217,Modivas,platform,,,bus_stop,,,,yes,,IARw97olf8-njyfVQVdhYg,2016-05-22
+-8.6529462,41.2839163,4095443057,Arões,platform,,,bus_stop,yes,,,,yes,,
+-8.7142291,41.315052,3897689878,Mindelo,stop_position,stop,,,,yes,yes,,,,
+-8.7141921,41.3150666,280078055,Mindelo,stop_position,stop,,,,yes,yes,,,,
+-8.7093102,41.315729,2116782348,Mindelo,,,,bus_stop,,,,,,,
+-8.682332,41.3377297,2587265000,,,,,bus_stop,,,,,,,
