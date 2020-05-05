@@ -1,4 +1,0 @@
-X,Y,osm_id,layer,highway,surface,name,tunnel,oneway,railway,maxspeed,usage,frequency,gauge,voltage,electrified
--8.70618895,41.29604025,387757434,-1,unclassified,cobblestone,Rua da Fonte,yes,no,,50,,,,,
--8.703262,41.2993938,386440147,-1,,,,yes,yes,light_rail,,main,0,1435,750,contact_line
--8.70322935,41.29941465,386440136,-1,,,,yes,yes,light_rail,,main,0,1435,750,contact_line
