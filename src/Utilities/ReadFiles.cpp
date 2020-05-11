@@ -1,8 +1,8 @@
 #include "ReadFiles.h"
 #include <algorithm>
 
-#define MAPOINTS_FILE  "../files/4x4/nodes.txt"
-#define CONECTPOINTS_FILE  "../files/4x4/edges.txt"
+#define MAPOINTS_FILE  "../files/Ermesinde/nodes.txt"
+#define CONECTPOINTS_FILE  "../files/Ermesinde/edges.txt"
 
 vector<MapPoint*> ReadFiles::loadMapPoints() {
 	vector<MapPoint*> result;
@@ -12,15 +12,15 @@ vector<MapPoint*> ReadFiles::loadMapPoints() {
 	string str;
 	ifstream file(name);
 
-    if(!file.is_open()){
-        cout<<"fail to open nodes file"<<endl;
-    }
-
     getline(file,str);
     stringstream linestream(str);
     string st;
     getline(linestream,st,'\n');
     int fileSize =strtod(st.c_str(), NULL);
+
+    if(!file.is_open()){
+        cout<<"fail to open nodes file"<<endl;
+    }
 
     for(int i=0;i<fileSize;i++){
 
@@ -47,8 +47,8 @@ vector<MapPoint*> ReadFiles::loadMapPoints() {
 }
 
 
-vector<ConectPoints*> ReadFiles::loadConects(){
-	vector<ConectPoints*> result;
+vector<ConnectPoints*> ReadFiles::loadConects(){
+	vector<ConnectPoints*> result;
 
 	string name= CONECTPOINTS_FILE;
 	string str;
@@ -59,6 +59,10 @@ vector<ConectPoints*> ReadFiles::loadConects(){
     string st;
     getline(linestream,st,'\n');
     int fileSize =strtod(st.c_str(), NULL);
+
+    if(!file.is_open()){
+        cout<<"fail to open edges file"<<endl;
+    }
 
     for(int i=0;i<fileSize;i++){
         getline(file,str);
@@ -73,7 +77,7 @@ vector<ConectPoints*> ReadFiles::loadConects(){
         st.erase(remove(st.begin(), st.end(), ')'), st.end());
 		unsigned long  sec = atoll(st.c_str());
 
-		ConectPoints* trt=new ConectPoints(i,fr,sec);
+		ConnectPoints* trt=new ConnectPoints(i,fr,sec);
 
 		result.push_back(trt);
     }

@@ -9,7 +9,7 @@
 #include <fstream>
 #include <cstdlib>
 #include "../Main/MapPoint.h"
-#include "../Main/ConectPoints.h"
+#include "../Main/ConnectPoints.h"
 
 
 using namespace std;
@@ -20,7 +20,7 @@ class ReadFiles{
 public:
 
 	vector<MapPoint*>  loadMapPoints();
-	vector<ConectPoints*> loadConects();
+	vector<ConnectPoints*> loadConects();
 };
 
 
