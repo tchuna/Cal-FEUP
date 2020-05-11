@@ -6,17 +6,6 @@ unsigned long  long MapPoint:: getID(){
 	return this->idPoint;
 }
 
-double MapPoint:: getLat(){
-
-	return this->latitude;
-}
-
-double MapPoint:: getLong(){
-
-	return this->longitude;
-}
-
-
 double MapPoint::getY(){
 
 	return this->y;
@@ -31,11 +20,14 @@ double MapPoint::getX(){
 
 void MapPoint::print(){
 
-	/*cout<<this->idPoint<<" "<<this->latitude<<" "<<this->longitude
-			<<" "<<this->x<<" "<<this->y<<endl;*/
-
     cout<<this->idPoint<<" "<<this->x<<" "<<this->y<<endl;
 
+}
+
+
+
+bool MapPoint::operator==(const MapPoint & point) const {
+    return idPoint == point.idPoint;
 }
 
 

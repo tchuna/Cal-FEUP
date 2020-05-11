@@ -35,6 +35,8 @@ class Vertex {
 	bool visited;
 	bool processing;
 	int indegree;
+	int x;
+	int y;
 	double dist;
 
 public:

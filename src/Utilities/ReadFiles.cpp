@@ -1,8 +1,8 @@
 #include "ReadFiles.h"
 #include <algorithm>
 
-#define MAPOINTS_FILE  "../files/Ermesinde/nodes.txt"
-#define CONECTPOINTS_FILE  "../files/Ermesinde/edges.txt"
+#define MAPOINTS_FILE  "../files/4x4/nodes.txt"
+#define CONECTPOINTS_FILE  "../files/4x4/edges.txt"
 
 vector<MapPoint*> ReadFiles::loadMapPoints() {
 	vector<MapPoint*> result;

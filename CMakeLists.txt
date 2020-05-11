@@ -9,4 +9,4 @@ include_directories(src/GraphViewer)
 include_directories(files)
 file(GLOB_RECURSE SOURCE_FILES "src/*/*.cpp")
 
-add_executable(cal ${SOURCE_FILES} src/main.cpp )
+add_executable(cal ${SOURCE_FILES} src/main.cpp src/Emirita/HealthCare.cpp src/Emirita/HealthCare.h)

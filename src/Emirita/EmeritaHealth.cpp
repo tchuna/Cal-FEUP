@@ -2,8 +2,8 @@
 #include "EmeritaHealth.h"
 
 
-double EmeritaHealth::distanceTwoPoints(unsigned long pointX1,unsigned long pointY1,
-                                           unsigned long pointX2,unsigned long pointY2){
+double EmeritaHealth::distanceTwoPoints(unsigned long pointX1, unsigned long pointY1,
+                                        unsigned long pointX2, unsigned long pointY2){
 
     pair<double,double> distance = make_pair(pointX2 - pointX1 ,pointY2 - pointY1 );
 
@@ -11,23 +11,31 @@ double EmeritaHealth::distanceTwoPoints(unsigned long pointX1,unsigned long poin
 
 }
 
-void EmeritaHealth:: loadFiles(){
-    ReadFiles file;
 
-    this->connectP=file.loadConects();
-    this->points=file.loadMapPoints();
-    this->gv = new GraphViewer(1200, 600,true);
+void EmeritaHealth::createViewer() {
+    gv= new GraphViewer(600, 1800, false);
+    gv->setBackground("background.jpg");
+    gv->createWindow(600, 1800);
 
 
 }
 
+void EmeritaHealth:: loadFiles(){
+    ReadFiles file;
+    this->connectP=file.loadConects();
+    this->points=file.loadMapPoints();
 
-void EmeritaHealth:: constructGraph(){
+}
+
+
+Graph<unsigned long> EmeritaHealth:: constructGraph(){
     loadFiles();
     double x1,x2,y1,y2, dist;
+    vector<unsigned long> nodes;
 
     for(unsigned int i =0; i<points.size();i++){
         graph.addVertex(points[i]->getID());
+        gv->addNode(points[i]->getID(),points[i]->getX() ,points[i]->getY());
     }
 
 
@@ -55,10 +63,10 @@ void EmeritaHealth:: constructGraph(){
         dist=distanceTwoPoints(x1,y1,x2,y2);
         graph.addEdge(connectP[i]->getFirstP(),connectP[i]->getSecondP(),dist);
 
+        gv->addEdge(connectP[i]->getId(),connectP[i]->getFirstP(),connectP[i]->getSecondP(),edgeType.DIRECTED);
+
         cout<<connectP[i]->getId() << "   Point1: "<<connectP[i]->getFirstP()<<"   "<<"Point2: "<<connectP[i]->getSecondP()<<"   "<<"dist: "<<dist<<endl;
     }
-
-
-
-
+    gv->rearrange();
+    return graph;
 }

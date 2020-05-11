@@ -2,15 +2,21 @@
 #include <vector>
 #include <cstdio>
 #include "Utilities/ReadFiles.h"
-#include "Main/MapPoint.h"
-#include "Main/EmeritaHealth.h"
+#include "Map/MapPoint.h"
+#include "Emirita/EmeritaHealth.h"
+#include "Graph/Graph.h"
+
 
 using namespace std;
 
 int main() {
+    Graph<unsigned long> graph;
 
     EmeritaHealth emeritaHealth;
-    emeritaHealth.constructGraph();
+    emeritaHealth.createViewer();
+    graph=emeritaHealth.constructGraph();
+
+
 
 
 

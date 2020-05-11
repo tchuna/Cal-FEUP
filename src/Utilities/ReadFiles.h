@@ -8,8 +8,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include "../Main/MapPoint.h"
-#include "../Main/ConnectPoints.h"
+#include "../Map/MapPoint.h"
+#include "../Map/ConnectPoints.h"
 
 
 using namespace std;
