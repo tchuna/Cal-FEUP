@@ -1,7 +1,3 @@
-//
-// Created by elgner on 11/05/20.
-//
-
 #include "HealthCare.h"
 
 int HealthCare::getXposition(){
