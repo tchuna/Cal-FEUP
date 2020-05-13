@@ -6,10 +6,11 @@
 #include "../Utilities/ReadFiles.h"
 
 
-void GraphWorkout::loadFiles(){
+void GraphWorkout::loadGraph(){
     ReadFiles file;
-    this->connectP=file.loadConects();
+    this->connectP=file.loadConnects();
     this->points=file.loadMapPoints();
+
 
 }
 
@@ -23,7 +24,7 @@ double GraphWorkout::distanceTwoPointsOnMap(unsigned long pointX1, unsigned long
 
 
 Graph<MapPoint> *  GraphWorkout::constructGraph(){
-    loadFiles();
+    loadGraph();
     double x1,x2,y1,y2, dist;
     originalGraph=new Graph<MapPoint>;
     vector<MapPoint> nodes;
@@ -63,7 +64,7 @@ Graph<MapPoint> *  GraphWorkout::constructGraph(){
         MapPoint node2=MapPoint(id2,x2,y2);
         originalGraph->addEdge(node1,node2,dist);
 
-        cout<<connectP[i]->getId() << "   Point1: "<<connectP[i]->getFirstP()<<"   "<<"Point2: "<<connectP[i]->getSecondP()<<"   "<<"dist: "<<dist<<endl;
+        //cout<<connectP[i]->getId() << "   Point1: "<<connectP[i]->getFirstP()<<"   "<<"Point2: "<<connectP[i]->getSecondP()<<"   "<<"dist: "<<dist<<endl;
     }
 
 
@@ -72,15 +73,20 @@ Graph<MapPoint> *  GraphWorkout::constructGraph(){
 }
 
 
-bool  GraphWorkout::addVehicles(Vehicle * v){
+bool  GraphWorkout::addVehicles(){
+    ReadFiles file;
+    vehicles =file.loadVehicles();
 
 }
 
-bool  GraphWorkout::addNursingHome(NursingHome * n){
-
+bool  GraphWorkout::addNursingHome(){
+    ReadFiles file;
+    nursingHome=file.loadNursingHome();
 }
 
-bool  GraphWorkout::addHealthStation(HealthStation * h){
+bool  GraphWorkout::addHealthStation(){
+    ReadFiles file;
+    healthCareLocation=file.loadHealthStation();
 
 }
 

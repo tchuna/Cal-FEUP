@@ -1,27 +1,18 @@
 #include "HealthStation.h"
 
-int HealthStation::getXposition(){
-    return xPosition;
-}
-
-int  HealthStation::getYposition(){
-    return yPosition;
-}
-
-int  HealthStation::getType(){
+int HealthStation::getType(){
     return type;
 }
 
-unsigned long int  HealthStation::getId(){
-    return id;
+MapPoint* HealthStation::getMapPoint(){
+    return mapPoint;
 }
 
-vector<Vehicle*>  HealthStation::getVehicle(){
-    return vehicle;
+void HealthStation::print(){
+    mapPoint->print();
+    cout<<type<<endl;
 }
 
-void  HealthStation::setVehicle(vector<Vehicle*> vehicle){
-    this->vehicle=vehicle;
+bool HealthStation::operator==(const HealthStation & hs) const {
+    return mapPoint == hs.mapPoint;
 }
-
-

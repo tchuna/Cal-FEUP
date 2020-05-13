@@ -14,6 +14,25 @@ int main() {
 
     GraphWorkout emeritaHealth;
     emeritaHealth.constructGraph();
+    emeritaHealth.addVehicles();
+    emeritaHealth.addNursingHome();
+    emeritaHealth.addHealthStation();
+
+
+    /*for(int i=0;i<emeritaHealth.vehicles.size();i++){
+        emeritaHealth.vehicles[i]->print();
+
+    }*/
+
+    /*for(int i=0;i<emeritaHealth.nursingHome.size();i++){
+        emeritaHealth.nursingHome[i]->print();
+
+    }*/
+
+    for(int i=0;i<emeritaHealth.healthCareLocation.size();i++){
+        emeritaHealth.healthCareLocation[i]->print();
+
+    }
 
 	return 0;
 }

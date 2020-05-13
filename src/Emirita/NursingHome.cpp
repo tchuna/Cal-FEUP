@@ -1,24 +1,18 @@
 #include "NursingHome.h"
 
-int NursingHome::getXposition(){
-    return xPosition;
+
+MapPoint* NursingHome::getMapPoint() {
+    return mapPoint;
 }
-int NursingHome::getYposition(){
-    return yPosition;
-}
-unsigned long int NursingHome::getId(){
-    return id;
-}
-vector<Elderly*> NursingHome::getElderly(){
-    return elderly;
-}
-void NursingHome::setElderly(vector<Elderly*> elderly){
-    this->elderly=elderly;
+int NursingHome::getElderlyNumber(){
+    return elderlyNumber;
 }
 
-vector<Vehicle *> NursingHome::getVehicle(){
-    return vehicle;
+void NursingHome::print(){
+    mapPoint->print();
+    cout<<elderlyNumber<<endl;
 }
-void NursingHome::setVehicle(vector<Vehicle *> vehicle) {
-    this->vehicle=vehicle;
+
+bool NursingHome::operator==(const NursingHome & nur) const {
+    return mapPoint == nur.mapPoint;
 }

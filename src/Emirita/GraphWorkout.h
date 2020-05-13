@@ -33,17 +33,17 @@ public:
     vector<HealthStation *> healthCareLocation;
 
 
-    void loadFiles();
+    void loadGraph();
     Graph<MapPoint> * constructGraph();
     double distanceTwoPointsOnMap(unsigned long pointX1, unsigned long pointY1,unsigned long pointX2, unsigned long pointY2);
 
     GraphWorkout & preProcessGraph();
 
-    bool addVehicles(Vehicle * v);
+    bool addVehicles();
 
-    bool addNursingHome(NursingHome * n);
+    bool addNursingHome();
 
-    bool addHealthStation(HealthStation * h);
+    bool addHealthStation();
 
     vector<string> getHealthStationIds();
 

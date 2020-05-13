@@ -4,7 +4,7 @@
 
 #ifndef VEHICLE_H
 #define VEHICLE_H
-#include "Elderly.h"
+#include "../Map/MapPoint.h"
 #include <vector>
 #include <iostream>
 
@@ -14,38 +14,30 @@ class Vehicle {
 
     int vehicleCapacity;
     int vehicleType;
-    int nursingHomeId;
-    int vehicleCode;
-    vector <Elderly*>occupants;
+    MapPoint* mapPoint;
 
 
 public:
 
-    Vehicle(int code, int capacity, int type, int nurhid ){
-        this->vehicleCode=code;
+    Vehicle(int capacity, int type,MapPoint* node) {
         this->vehicleCapacity=capacity;
         this->vehicleType=type;
-        this->nursingHomeId=nurhid;
+        this->mapPoint=node;
     };
 
 
-    int getVehicleCode();
-    void setVehicleCode(int code);
-
     int getVehicleCapacity();
     void setVehicleCapacity(int n);
-
     int getVehicleType();
     void setVehicleType(int type);
+    MapPoint getMapPoint();
+    void setMapPoint(MapPoint* node);
+    bool operator==(const Vehicle & vehicle) const;
 
-    int getNursingHomeId();
-    void setNursingHomeId(int g);
+
 
     void print();
 
-    vector <Elderly*>getOccupants();
-
-    bool  addOccupants(Elderly* container);
 
 };
 

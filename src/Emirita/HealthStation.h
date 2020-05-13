@@ -8,29 +8,22 @@
 
 
 class HealthStation {
-    unsigned long int  id;
-    int yPosition;
-    int xPosition;
+    MapPoint* mapPoint;
     int type;
-    vector<Vehicle*> vehicle;
 
 public:
 
-    HealthStation(unsigned long int id, int x, int y, int type){
-        this->id=id;
-        this->xPosition=x;
-        this->yPosition=y;
+    HealthStation(MapPoint* node,int type){
+
         this->type=type;
+        this->mapPoint=node;
 
     }
 
-    int getXposition();
-    int getYposition();
     int getType();
-    unsigned long int getId();
-    vector<Vehicle*> getVehicle();
-    void setVehicle(vector<Vehicle*> vehicle);
-
+    MapPoint* getMapPoint();
+    void print();
+    bool operator==(const HealthStation & hs) const;
     
 };
 

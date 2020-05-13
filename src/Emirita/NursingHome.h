@@ -13,35 +13,22 @@
 using  namespace std;
 
 class NursingHome {
-    unsigned long int  id;
-    int yPosition;
-    int xPosition;
-    vector<Elderly*> elderly;
-    vector<Vehicle*> vehicle;
+    MapPoint* mapPoint;
+    int elderlyNumber;
 
 public:
 
-    NursingHome(unsigned long int id, int x, int y){
-        this->id=id;
-        this->xPosition=x;
-        this->yPosition=y;
-
+    NursingHome(MapPoint* node,int number){
+        this->mapPoint=node;
+        this->elderlyNumber=number;
     }
 
 
-    int getXposition();
-    int getYposition();
-    unsigned long int getId();
-    vector<Elderly*> getElderly();
-    vector<Vehicle*> getVehicle();
-    void setElderly(vector<Elderly*> elderly);
-    void setVehicle(vector<Vehicle*> vehicle);
+    MapPoint* getMapPoint();
+    int getElderlyNumber();
 
-
-
-
-
-
+    void print();
+    bool operator==(const NursingHome & nur) const;
 };
 
 
