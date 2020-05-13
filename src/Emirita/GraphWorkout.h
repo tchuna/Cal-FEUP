@@ -7,7 +7,7 @@
 
 #include "../Graph/Graph.h"
 #include "../Map/MapPoint.h"
-#include "HealthCare.h"
+#include "HealthStation.h"
 #include "Vehicle.h"
 #include "NursingHome.h"
 #include "../Map/ConnectPoints.h"
@@ -30,7 +30,7 @@ public:
 
     vector<NursingHome *> nursingHome;
 
-    vector<HealthCare *> healthCareLocation;
+    vector<HealthStation *> healthCareLocation;
 
 
     void loadFiles();
@@ -43,15 +43,15 @@ public:
 
     bool addNursingHome(NursingHome * n);
 
-    bool addHealthStation(HealthCare * h);
+    bool addHealthStation(HealthStation * h);
 
     vector<string> getHealthStationIds();
 
 
 
-    vector<Vertex<MapPoint> * > OneVehicleOneItineration(Vehicle * vehicle , HealthCare * healthCare);
+    vector<Vertex<MapPoint> * > OneVehicleOneItineration(Vehicle * vehicle , HealthStation * healthCare);
 
-    vector<Vertex<MapPoint> * > OneVehicleMultipleItineration(Vehicle * vehicle,  HealthCare * healthCare);
+    vector<Vertex<MapPoint> * > OneVehicleMultipleItineration(Vehicle * vehicle, HealthStation * healthCare);
 
     void floydWarshallShortestPath();
 

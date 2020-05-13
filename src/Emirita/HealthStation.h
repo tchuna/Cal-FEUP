@@ -7,7 +7,7 @@
 #include "Vehicle.h"
 
 
-class HealthCare {
+class HealthStation {
     unsigned long int  id;
     int yPosition;
     int xPosition;
@@ -16,14 +16,13 @@ class HealthCare {
 
 public:
 
-    HealthCare(unsigned long int id, int x, int y, int type){
+    HealthStation(unsigned long int id, int x, int y, int type){
         this->id=id;
         this->xPosition=x;
         this->yPosition=y;
         this->type=type;
 
     }
-
 
     int getXposition();
     int getYposition();
@@ -32,12 +31,7 @@ public:
     vector<Vehicle*> getVehicle();
     void setVehicle(vector<Vehicle*> vehicle);
 
-
-
-
-
-
-
+    
 };
 
 

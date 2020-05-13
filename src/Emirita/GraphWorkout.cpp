@@ -80,7 +80,7 @@ bool  GraphWorkout::addNursingHome(NursingHome * n){
 
 }
 
-bool  GraphWorkout::addHealthStation(HealthCare * h){
+bool  GraphWorkout::addHealthStation(HealthStation * h){
 
 }
 
@@ -89,12 +89,12 @@ vector<string>  GraphWorkout::getHealthStationIds(){
 }
 
 
-vector<Vertex<MapPoint> * >  GraphWorkout::OneVehicleOneItineration(Vehicle * vehicle , HealthCare * healthCare){
+vector<Vertex<MapPoint> * >  GraphWorkout::OneVehicleOneItineration(Vehicle * vehicle , HealthStation * healthCare){
 
 
 }
 
-vector<Vertex<MapPoint> * >  GraphWorkout::OneVehicleMultipleItineration(Vehicle * vehicle,  HealthCare * healthCare){
+vector<Vertex<MapPoint> * >  GraphWorkout::OneVehicleMultipleItineration(Vehicle * vehicle, HealthStation * healthCare){
 
 
 }
