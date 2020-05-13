@@ -31,7 +31,6 @@ int main() {
 
     for(int i=0;i<emeritaHealth.healthCareLocation.size();i++){
         emeritaHealth.healthCareLocation[i]->print();
-
     }
 
 	return 0;
