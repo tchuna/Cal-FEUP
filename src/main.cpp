@@ -5,6 +5,7 @@
 #include "Map/MapPoint.h"
 #include "Graph/Graph.h"
 #include "../Emirita/GraphWorkout.h"
+#include "Menu/Menu.h"
 
 
 using namespace std;
@@ -14,6 +15,9 @@ int main() {
 
     GraphWorkout emeritaHealth;
     emeritaHealth.constructGraph();
+    Menu menu =  Menu(emeritaHealth);
+    menu.start();
+
 
 	return 0;
 }
