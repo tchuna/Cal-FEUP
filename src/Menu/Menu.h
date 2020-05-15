@@ -12,12 +12,17 @@ public:
 
     void start();
     void showMainMenu();
+
     void showBasic();
     void showMapPoints();
     void showMapEdges();
     void showVehicles();
     void showNursingHomes();
     void showHealthCareLocations();
+
+    void showTestMenu();
+    void normalElders();
+    void emergencyElders();
 
 };
 

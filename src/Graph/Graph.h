@@ -58,6 +58,9 @@ public:
 	Vertex* path;
 
 	vector<Edge<T>  > getAdj() const;
+
+	int getX() {return this->x;};
+	int getY() {return this->y;};
 };
 
 
