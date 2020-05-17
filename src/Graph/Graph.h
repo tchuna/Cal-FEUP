@@ -40,6 +40,7 @@ class Vertex {
 	double dist;
 
 public:
+    size_t posAtVec;
 	vector<Edge<T>  > adj;
 	Vertex(T in);
 	friend class Graph<T>;
@@ -155,10 +156,11 @@ class Graph {
 	void dfsVisit();
 	void getPathTo(Vertex<T> *origin, list<T> &res);
 
-	int ** W;   //weight
-	int ** P;   //path
-
 public:
+
+    int ** W;   //weight
+    int ** P;   //path
+
 	bool addVertex(const T &in);
 	bool addEdge(const T &sourc, const T &dest, double w);
 	bool removeVertex(const T &in);
@@ -168,8 +170,8 @@ public:
 	int maxNewChildren(Vertex<T> *v, T &inf) const;
 	vector<Vertex<T> * > getVertexSet() const;
 	int getNumVertex() const;
-
-
+    pair<Vertex<T> *, Vertex<T> *> getTwoVertexs(const T &sourc, const T &dest);
+    Vertex<T> * operator()(int n);
 	Vertex<T>* getVertex(const T &v) const;
 	void resetIndegrees();
 	vector<Vertex<T>*> getSources() const;
@@ -178,14 +180,12 @@ public:
 	vector<T> getPath(const T &origin, const T &dest);
 	void unweightedShortestPath(const T &v);
 	bool isDAG();
-
-	
 	void bellmanFordShortestPath(const T &s);
 	void dijkstraShortestPath(const T &s);
 	void floydWarshallShortestPath();
 	int edgeCost(int vOrigIndex, int vDestIndex);
-	vector<T> getfloydWarshallPath(const T &origin, const T &dest);
-	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
+    vector<Vertex<T> * > getfloydWarshallPath(const T &origin, const T &dest);
+	void getfloydWarshallPathAux(int index1, int index2, vector<Vertex<T> * >  &res );
 
 	
 	int getWeight(const T &source, const T &dest);
@@ -220,6 +220,7 @@ bool Graph<T>::addVertex(const T &in) {
 	for (; it!=ite; it++)
 		if ((*it)->info == in) return false;
 	Vertex<T> *v1 = new Vertex<T>(in);
+    v1->posAtVec = vertexSet.size();
 	vertexSet.push_back(v1);
 	return true;
 }
@@ -270,6 +271,7 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
 	return true;
 }
 
+
 template <class T>
 bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
 	typename vector<Vertex<T>*>::iterator it= vertexSet.begin();
@@ -291,7 +293,23 @@ bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
 	return vS->removeEdgeTo(vD);
 }
 
-
+template <class T>
+pair<Vertex<T>*, Vertex<T>*> Graph<T>::getTwoVertexs(const T & sourc, const T & dest) {
+    typename vector<Vertex<T>*>::iterator it = vertexSet.begin();
+    typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
+    int found = 0;
+    Vertex<T> *vS = nullptr, *vD = nullptr;
+    while (found != 2 && it != ite) {
+        if ((*it)->info == sourc)
+        {vS=*it; found++;}
+        if ((*it)->info == dest)
+        {vD=*it; found++;}
+        it++;
+    }
+    if (found != 2)
+        cout << "getTwoVertexes failed" << endl;
+    return pair<Vertex<T>*, Vertex<T>*>(vS, vD);
+}
 
 
 template <class T>
@@ -503,7 +521,7 @@ vector<T> Graph<T>::getPath(const T &origin, const T &dest){
 }
 
 template<class T>
-vector<T> Graph<T>::getfloydWarshallPath(const T &origin, const T &dest){
+vector<Vertex<T> * > Graph<T>::getfloydWarshallPath(const T &origin, const T &dest){
 
 	int originIndex = -1, destinationIndex = -1;
 
@@ -519,13 +537,13 @@ vector<T> Graph<T>::getfloydWarshallPath(const T &origin, const T &dest){
 	}
 
 
-	vector<T> res;
+    vector<Vertex<T> * > res;
 
 	
 	if(W[originIndex][destinationIndex] == INT_INFINITY)
 		return res;
 
-	res.push_back(vertexSet[originIndex]->info);
+	res.push_back(vertexSet[originIndex]);
 
 	if(P[originIndex][destinationIndex] != -1)
 	{
@@ -533,24 +551,25 @@ vector<T> Graph<T>::getfloydWarshallPath(const T &origin, const T &dest){
 
 		getfloydWarshallPathAux(originIndex, intermedIndex, res);
 
-		res.push_back(vertexSet[intermedIndex]->info);
+		res.push_back(vertexSet[intermedIndex]);
 
 		getfloydWarshallPathAux(intermedIndex,destinationIndex, res);
 	}
-	res.push_back(vertexSet[destinationIndex]->info);
+
+	res.push_back(vertexSet[destinationIndex]);
+
 	return res;
 }
 
 
 
 template<class T>
-void Graph<T>::getfloydWarshallPathAux(int index1, int index2, vector<T> & res)
+void Graph<T>::getfloydWarshallPathAux(int index1, int index2, vector<Vertex<T> * >  &res)
 {
 	if(P[index1][index2] != -1)
 	{
 		getfloydWarshallPathAux(index1, P[index1][index2], res);
-
-		res.push_back(vertexSet[P[index1][index2]]->info);
+		res.push_back(vertexSet[P[index1][index2]]);
 
 		getfloydWarshallPathAux(P[index1][index2],index2, res);
 	}
@@ -723,6 +742,12 @@ int Graph<T>::getWeight(const T &source, const T &dest) {
 	}
 
 	return edgeCost(s,d);
+}
+
+
+template<class T>
+inline Vertex<T>* Graph<T>::operator()(int n) {
+    return vertexSet[n];
 }
 
 

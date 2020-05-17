@@ -50,7 +50,7 @@ vector<HealthStation*> ReadFiles::loadHealthStation(){
         int ty = atoi(st.c_str());
 
 
-        HealthStation* hstation = new HealthStation (trt,ty);
+        HealthStation* hstation = new HealthStation (*trt,ty);
 
 
 
@@ -104,7 +104,7 @@ vector<NursingHome*> ReadFiles::loadNursingHome(){
         int er = atoi(st.c_str());
 
 
-        NursingHome* nursingHome = new NursingHome(trt,er);
+        NursingHome* nursingHome = new NursingHome(*trt,er);
 
 
 
@@ -164,7 +164,7 @@ vector<Vehicle*> ReadFiles::loadVehicles() {
         st.erase(remove(st.begin(), st.end(), ')'), st.end());
         int type = atoi(st.c_str());
 
-        Vehicle* vehicle = new Vehicle(cap,type,trt);
+        Vehicle* vehicle = new Vehicle(cap,type,*trt);
 
 
 
@@ -213,6 +213,7 @@ vector<MapPoint*> ReadFiles::loadMapPoints() {
         double y = strtod(st.c_str(), NULL);
 
         MapPoint* trt = new MapPoint(id,x,y);
+
 
         if (find(result.begin(), result.end(), trt) == result.end()) {//not in the vector, so it will be added
             result.push_back(trt);

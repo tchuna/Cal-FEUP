@@ -12,7 +12,7 @@ double MapPoint::getY(){
 }
 double MapPoint::getX(){
 
-	return this->y;
+	return this->x;
 
 }
 

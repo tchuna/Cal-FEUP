@@ -4,12 +4,12 @@ int HealthStation::getType(){
     return type;
 }
 
-MapPoint* HealthStation::getMapPoint(){
+MapPoint HealthStation::getMapPoint(){
     return mapPoint;
 }
 
 void HealthStation::print(){
-    mapPoint->print();
+    mapPoint.print();
     cout<<type<<endl;
 }
 

@@ -14,12 +14,12 @@ class Vehicle {
 
     int vehicleCapacity;
     int vehicleType;
-    MapPoint* mapPoint;
+    MapPoint mapPoint;
 
 
 public:
 
-    Vehicle(int capacity, int type,MapPoint* node) {
+    Vehicle(int capacity, int type,MapPoint node) {
         this->vehicleCapacity=capacity;
         this->vehicleType=type;
         this->mapPoint=node;
@@ -31,8 +31,9 @@ public:
     int getVehicleType();
     void setVehicleType(int type);
     MapPoint getMapPoint();
-    void setMapPoint(MapPoint* node);
+    void setMapPoint(MapPoint node);
     bool operator==(const Vehicle & vehicle) const;
+    Vehicle & addPass(int value);
 
 
 

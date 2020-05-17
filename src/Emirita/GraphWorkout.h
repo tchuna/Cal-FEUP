@@ -45,15 +45,13 @@ public:
 
     bool addHealthStation();
 
-    vector<string> getHealthStationIds();
+    vector<unsigned long long> getHealthStationIds();
+    vector<unsigned long long>  getNursingHomeIds();
 
 
+    vector<Vertex<MapPoint> * >  oneVehicleOneItineration();
 
-    vector<Vertex<MapPoint> * > OneVehicleOneItineration(Vehicle * vehicle , HealthStation * healthCare);
-
-    vector<Vertex<MapPoint> * > OneVehicleMultipleItineration(Vehicle * vehicle, HealthStation * healthCare);
-
-    void floydWarshallShortestPath();
+    vector<Vertex<MapPoint> * > oneVehicleMultipleItineration();
 
     vector<Vertex<MapPoint> *> backPreProcess(vector<Vertex<MapPoint>* > shortenedPath);
 

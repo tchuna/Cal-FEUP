@@ -21,13 +21,19 @@ void Vehicle::setVehicleType(int type){
 
 
 void Vehicle::print(){
-    mapPoint->print();
+    mapPoint.print();
     cout<<vehicleCapacity<<" "<<vehicleType<<endl;
+}
+
+MapPoint Vehicle::getMapPoint(){
+    return mapPoint;
 }
 
 bool Vehicle::operator==(const Vehicle & vehicle) const {
     return mapPoint == vehicle.mapPoint;
 }
 
+
+Vehicle & Vehicle::addPass(int value) {	this->vehicleType += value; return *this;}
 
 

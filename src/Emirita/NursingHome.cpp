@@ -1,7 +1,7 @@
 #include "NursingHome.h"
 
 
-MapPoint* NursingHome::getMapPoint() {
+MapPoint NursingHome::getMapPoint() {
     return mapPoint;
 }
 int NursingHome::getElderlyNumber(){
@@ -9,7 +9,7 @@ int NursingHome::getElderlyNumber(){
 }
 
 void NursingHome::print(){
-    mapPoint->print();
+    mapPoint.print();
     cout<<elderlyNumber<<endl;
 }
 
