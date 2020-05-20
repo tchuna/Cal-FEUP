@@ -187,17 +187,18 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration( Vehicl
     return result;
 }
 
-/*
+
 vector<vector<Vertex<MapPoint>*>> GraphWorkout:: multipleVehicleMultipleItineration(HealthStation * hs, int vehiclesCapacity) {
     vector<vector<Vertex<MapPoint>*>> result;
+
     Vehicle * v = vehicles[0];
-    while (healthCareLocation.size() > 0) {
+    while (nursingHome.size() > 0) {
         v->setVehicleCapacity(vehiclesCapacity);
-        result.push_back(oneVehicleMultipleItineration());
+        result.push_back(oneVehicleMultipleItineration(v, hs));
     }
+    
     return result;
 }
-*/
 
 void  GraphWorkout::distBetHealthLocation(int vertexPos, bool isSort){
     Vertex<MapPoint> * tempVertex;
