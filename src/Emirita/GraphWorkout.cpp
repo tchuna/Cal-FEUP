@@ -187,6 +187,7 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration( Vehicl
     return result;
 }
 
+/*
 vector<vector<Vertex<MapPoint>*>> GraphWorkout:: multipleVehicleMultipleItineration(HealthStation * hs, int vehiclesCapacity) {
     vector<vector<Vertex<MapPoint>*>> result;
     Vehicle * v = vehicles[0];
@@ -196,7 +197,7 @@ vector<vector<Vertex<MapPoint>*>> GraphWorkout:: multipleVehicleMultipleItinerat
     }
     return result;
 }
-
+*/
 
 void  GraphWorkout::distBetHealthLocation(int vertexPos, bool isSort){
     Vertex<MapPoint> * tempVertex;
