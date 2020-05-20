@@ -111,22 +111,20 @@ vector<unsigned long long>  GraphWorkout::getNursingHomeIds(){
 
 }
 
-vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(){
+vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v , HealthStation * healthCare , NursingHome * nr){ // nr = nursingHme[0]
 
-    MapPoint healthstation = healthCareLocation[0]->getMapPoint();
-    MapPoint vehicle = vehicles[0]->getMapPoint();
-    MapPoint nursinghome = nursingHome[0]->getMapPoint();
+    MapPoint healthstation = healthCare->getMapPoint();
+    MapPoint vehicle = v->getMapPoint();
+    MapPoint nursinghome = nr->getMapPoint();
     vector<Vertex<MapPoint> * > result, temp;
-
-    cout<<"-----------------------------------------------"<<endl;
 
     originalGraph->floydWarshallShortestPath();
 
 
-    if (healthCareLocation.size() != 1) {
+    /*if (nursinghom.size() != 1) {
         cout << "there can only be one Health station" << endl;
         exit(1);
-    }
+    }*/
 
     pair<Vertex<MapPoint>*, Vertex<MapPoint>*> nodes = originalGraph->getTwoVertexs(vehicle,nursinghome);
     result = originalGraph->getfloydWarshallPath(vehicle, nursinghome);
@@ -138,11 +136,12 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(){
 
 }
 
-vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration(){
+
+vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration( Vehicle * v, HealthStation * hs ){
     vector<Vertex<MapPoint> * > result, temp;
     originalGraph->floydWarshallShortestPath();
-    Vehicle* v=vehicles[0];
-    HealthStation* hs=healthCareLocation[0];
+    //Vehicle* v=vehicles[0];
+    //HealthStation* hs=healthCareLocation[0];
 
 
     pair<Vertex<MapPoint>*, Vertex<MapPoint>*> nodes = originalGraph->getTwoVertexs(v->getMapPoint(), hs->getMapPoint());
@@ -185,6 +184,16 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration(){
     temp = originalGraph->getfloydWarshallPath(next->getInfo(), station->getInfo());
     result.insert(result.end(), temp.begin() + 1, temp.end());
 
+    return result;
+}
+
+vector<vector<Vertex<MapPoint>*>> GraphWorkout:: multipleVehicleMultipleItineration(HealthStation * hs, int vehiclesCapacity) {
+    vector<vector<Vertex<MapPoint>*>> result;
+    Vehicle * v = vehicles[0];
+    while (healthCareLocation.size() > 0) {
+        v->setVehicleCapacity(vehiclesCapacity);
+        result.push_back(oneVehicleMultipleItineration());
+    }
     return result;
 }
 

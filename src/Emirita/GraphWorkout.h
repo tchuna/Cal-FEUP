@@ -49,11 +49,13 @@ public:
     vector<unsigned long long>  getNursingHomeIds();
 
 
-    vector<Vertex<MapPoint> * >  oneVehicleOneItineration();
+    vector<Vertex<MapPoint> * >  oneVehicleOneItineration(Vehicle * vehicle , HealthStation * healthCar,NursingHome * nr);
 
-    vector<Vertex<MapPoint> * > oneVehicleMultipleItineration();
+    vector<Vertex<MapPoint> * > oneVehicleMultipleItineration(Vehicle * vehicle, HealthStation * healthCare);
 
     vector<Vertex<MapPoint> *> backPreProcess(vector<Vertex<MapPoint>* > shortenedPath);
+
+    vector<vector<Vertex<MapPoint>*>> multipleVehicleMultipleItineration(HealthStation * hs, int vehiclesCapacity);
 
     void distBetHealthLocation(int vertexPos, bool isSort);
 
