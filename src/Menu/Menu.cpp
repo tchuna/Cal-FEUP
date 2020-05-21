@@ -209,7 +209,7 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
     unsigned int n_nodes, n_edges, height, width, v1, v2, type, scale, dynamic, thickness, size, dashed, curved;
     float x, y;
     int id;
-    char color[20], label[256], icon_path[256], flow[256], weight[256];
+    char color[20], icon_path[256], flow[256], weight[256];
 
     window >> width >> height >> dynamic >> scale >> dashed >> curved >> background_path;
     GraphViewer *gv = new GraphViewer(width, height, dynamic, port);
@@ -224,10 +224,10 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
     iss >> n_nodes;
 
     // draw nodes
-    string nodeDefaultColor = "cyan";
+    string nodeDefaultColor = "blue";
     string nodePathColor = "red";
-    label[0] = '-';
-    size = 1000;
+    string label;
+    size = 10;
     icon_path[0] = '-';
 
     for(int i = 0; i < n_nodes;i++) {
@@ -241,8 +241,7 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
                 break;
             }
         }
-        if (label[0] != '-')
-            gv->setVertexLabel(i, label);
+        gv->setVertexLabel(i, "Node " + to_string(i));
         if (icon_path[0] != '-')
             gv->setVertexIcon(i, std::string(icon_path));
         gv->setVertexSize(i, size);
@@ -253,10 +252,10 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
     sscanf( line.c_str(), "%d", &n_edges);
 
     //draw edges
-    type = EdgeType::UNDIRECTED;
-    string defaultEdgeColor = "cyan";
+    type = EdgeType::DIRECTED;
+    string defaultEdgeColor = "black";
     string pathEdgeColor = "red";
-    thickness = 100;
+    thickness = 1;
     label[0] = '-';
     flow[0] = '%';
     weight[0] = '%';
