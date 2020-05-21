@@ -92,20 +92,18 @@ void Menu::showVehicles(){
 void Menu::showNursingHomes(){
     for(unsigned int i = 0; i < emeritaHealth.nursingHome.size(); i++) {
         cout << "NursingHome["<< i << "]: ";
-        cout << emeritaHealth.nursingHome[i]->getId() << " " <<
-        emeritaHealth.nursingHome[i]->getElderly().size() << " " <<
-        emeritaHealth.nursingHome[i]->getVehicle().size() << " " <<
-        emeritaHealth.nursingHome[i]->getXposition() << " " <<
-        emeritaHealth.nursingHome[i]->getYposition() << endl;
+        cout << emeritaHealth.nursingHome[i]->getMapPoint().getID() << " " <<
+        emeritaHealth.nursingHome[i]->getElderlyNumber() << " " <<
+        emeritaHealth.nursingHome[i]->getMapPoint().getX() << " " <<
+        emeritaHealth.nursingHome[i]->getMapPoint().getY() << endl;
     }
 }
 void Menu::showHealthCareLocations(){
     for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
         cout << "HealthCare["<< i << "]: ";
-        cout << emeritaHealth.healthCareLocation[i]->getId() << " " <<
-             emeritaHealth.healthCareLocation[i]->getVehicle().size()<< " " <<
-             emeritaHealth.healthCareLocation[i]->getXposition() << " " <<
-             emeritaHealth.healthCareLocation[i]->getYposition() << endl;
+        cout << emeritaHealth.healthCareLocation[i]->getMapPoint().getID() << " " <<
+             emeritaHealth.healthCareLocation[i]->getMapPoint().getX() << " " <<
+             emeritaHealth.healthCareLocation[i]->getMapPoint().getY() << endl;
     }
 }
 
@@ -135,97 +133,6 @@ void Menu::showTestMenu() {
 }
 
 void Menu::normalElders() {
-    cout << "\nNormal Elders test\n";
-
-    cout << "Nursing Homes List\n";
-    showNursingHomes();
-
-    int nursingHomeID;
-    cout << "\nSelect Nursing Home ID: ";
-    cin >> nursingHomeID;
-
-    cout << "\nHealthCare List\n";
-    showHealthCareLocations();
-
-    int healthCareID;
-    cout << "\nSelect HealthCare ID: ";
-    cin >> healthCareID;
-
-    int numberOfNormalElders = 0;
-
-    vector<Elderly*> elders;
-    vector<Vehicle*> vehicles;
-    vector<Vehicle*> vehiclesToGo;
-    HealthStation * healthCare;
-
-    //getHealthCare
-
-    for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
-        if(healthCareID == emeritaHealth.healthCareLocation[i]->getId()) {
-            healthCare = emeritaHealth.healthCareLocation[i];
-            break;
-        }
-    }
-
-
-    //get elders and vehicles from nursingHome
-    for(unsigned int i = 0; i < emeritaHealth.nursingHome.size(); i++) {
-        if(emeritaHealth.nursingHome[i]->getId() == nursingHomeID){
-            elders = emeritaHealth.nursingHome[i]->getElderly();
-            vehicles = emeritaHealth.nursingHome[i]->getVehicle();
-        }
-    }
-    //get number of normal elders
-    for(unsigned int i = 0; i < elders.size(); i++) {
-        if(elders[i]->getUrgency() == false)
-            numberOfNormalElders++;
-    }
-
-    //distribute elders to vehicles
-    for(unsigned int i = 0; i < vehicles.size(); i++) {
-        for(unsigned j = 0; j < elders.size(); i++) {
-            if(elders[j]->getUrgency() == false) {
-                if(vehicles[i]->getVehicleType() == 0 && vehicles[i]->getOccupants().size() < vehicles[i]->getVehicleCapacity()){
-                    numberOfNormalElders--;
-                    vehicles[i]->addOccupants(elders[j]);
-                    elders.erase(elders.begin()+j);
-                    j--;
-                    if(vehicles[i]->getOccupants().size() == vehicles[i]->getVehicleCapacity()){
-                        vehiclesToGo.push_back(vehicles[i]);
-                        vehicles.erase(vehicles.begin()+i);
-                        i--;
-                        break;  //next vehicle
-                    }
-                }
-            }
-        }
-    }
-
-    //save vehicles and elders to emeritas
-    for(unsigned int i = 0; i < emeritaHealth.nursingHome.size(); i++) {
-        if(emeritaHealth.nursingHome[i]->getId() == nursingHomeID){
-            emeritaHealth.nursingHome[i]->setElderly(elders);
-            emeritaHealth.nursingHome[i]->setVehicle(vehicles);
-        }
-    }
-
-    //check if all elders have transport
-    if(numberOfNormalElders > 0){
-        cout << "\nNot all elders have transportation available\n";
-    }
-
-    vector<vector<Vertex<MapPoint> * >> paths;
-    //Go Vehicles
-    for(unsigned int i = 0; i < vehiclesToGo.size(); i++){
-        paths.push_back(emeritaHealth.OneVehicleOneItineration(vehiclesToGo[i], healthCare));
-    }
-
-    //print results
-    for(unsigned int i = 0; i < paths.size(); i++){
-        for(unsigned int j = 0; j < paths[i].size(); j++){
-            cout << "Point[" << j << "]: " << paths[i][j]->getX() << " " << paths[i][j]->getY();
-        }
-    }
 
 }
 

@@ -15,14 +15,16 @@ int main() {
     Graph<unsigned long> graph;
     GraphWorkout emeritaHealth;
     emeritaHealth.constructGraph();
-    Menu menu =  Menu(emeritaHealth);
-    menu.start();
+
 
     emeritaHealth.addVehicles();
     emeritaHealth.addNursingHome();
     emeritaHealth.addHealthStation();
     //result=emeritaHealth.oneVehicleOneItineration();
-    result=emeritaHealth.oneVehicleMultipleItineration();
+    //result=emeritaHealth.oneVehicleMultipleItineration();
+
+    Menu menu =  Menu(emeritaHealth);
+    menu.start();
 
 
     cout<<"short path:"<<endl;
