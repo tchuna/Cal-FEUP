@@ -10,6 +10,10 @@
 #include <cstdlib>
 #include "../Map/MapPoint.h"
 #include "../Map/ConnectPoints.h"
+#include "../Emirita/Vehicle.h"
+#include "../Emirita/NursingHome.h"
+#include "../Emirita/HealthStation.h"
+
 
 
 using namespace std;
@@ -20,7 +24,10 @@ class ReadFiles{
 public:
 
 	vector<MapPoint*>  loadMapPoints();
-	vector<ConnectPoints*> loadConects();
+    vector<Vehicle*>  loadVehicles();
+    vector<NursingHome*>  loadNursingHome();
+    vector<HealthStation*>  loadHealthStation();
+	vector<ConnectPoints*> loadConnects();
 };
 
 

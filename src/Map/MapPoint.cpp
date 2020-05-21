@@ -12,7 +12,7 @@ double MapPoint::getY(){
 }
 double MapPoint::getX(){
 
-	return this->y;
+	return this->x;
 
 }
 
@@ -29,5 +29,7 @@ void MapPoint::print(){
 bool MapPoint::operator==(const MapPoint & point) const {
     return idPoint == point.idPoint;
 }
+
+
 
 

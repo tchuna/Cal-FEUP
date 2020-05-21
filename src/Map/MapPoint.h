@@ -8,7 +8,6 @@
 #include <math.h>
 
 
-
 using namespace std;
 
 class MapPoint{
@@ -18,12 +17,18 @@ class MapPoint{
 
 public:
 
+    MapPoint(){
+        this->idPoint=0;
+        this->x=0;
+        this->y=0;
+
+    }
+
     MapPoint(unsigned long long id, double x,double y){
 		this->idPoint=id;
 		this->x=x;
 		this->y=y;
-	};
-
+	}
 
 
 	unsigned long long getID();

@@ -33,29 +33,29 @@ public:
     vector<HealthStation *> healthCareLocation;
 
 
-    void loadFiles();
+    void loadGraph();
     Graph<MapPoint> * constructGraph();
     double distanceTwoPointsOnMap(unsigned long pointX1, unsigned long pointY1,unsigned long pointX2, unsigned long pointY2);
 
     GraphWorkout & preProcessGraph();
 
-    bool addVehicles(Vehicle * v);
+    bool addVehicles();
 
-    bool addNursingHome(NursingHome * n);
+    bool addNursingHome();
 
-    bool addHealthStation(HealthStation * h);
+    bool addHealthStation();
 
-    vector<string> getHealthStationIds();
+    vector<unsigned long long> getHealthStationIds();
+    vector<unsigned long long>  getNursingHomeIds();
 
 
+    vector<Vertex<MapPoint> * >  oneVehicleOneItineration(Vehicle * vehicle , HealthStation * healthCar,NursingHome * nr);
 
-    vector<Vertex<MapPoint> * > OneVehicleOneItineration(Vehicle * vehicle , HealthStation * healthCare);
-
-    vector<Vertex<MapPoint> * > OneVehicleMultipleItineration(Vehicle * vehicle, HealthStation * healthCare);
-
-    void floydWarshallShortestPath();
+    vector<Vertex<MapPoint> * > oneVehicleMultipleItineration(Vehicle * vehicle, HealthStation * healthCare);
 
     vector<Vertex<MapPoint> *> backPreProcess(vector<Vertex<MapPoint>* > shortenedPath);
+
+    vector<vector<Vertex<MapPoint>*>> multipleVehicleMultipleItineration(HealthStation * hs, int vehiclesCapacity);
 
     void distBetHealthLocation(int vertexPos, bool isSort);
 
