@@ -21,8 +21,9 @@ public:
     void showHealthCareLocations();
 
     void showTestMenu();
-    void normalElders();
-    void emergencyElders();
+    void oneVoneI();
+    void oneVmulI();
+    void drawGraphFromFile(std::string name, unsigned int port, vector<Vertex<MapPoint> *> path);
 
 };
 

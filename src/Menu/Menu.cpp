@@ -1,5 +1,8 @@
 #include "Menu.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include "graphviewer.h"
 
 void Menu::start() {
     showMainMenu();
@@ -111,8 +114,8 @@ void Menu::showTestMenu() {
     int nextMenu = -1;
     while(nextMenu != 0){
         cout << "\nTest Menu\n";
-        cout << "1 - Normal Elders to HealthCare\n";
-        cout << "2 - Emergency Elder to HealthCare\n";
+        cout << "1 - One Vehicle One Iteneration\n";
+        cout << "2 - On vehicle Multiple Iteneration\n";
         cout << "0 - Exit\n\n";
 
         cout << "Option: ";
@@ -122,31 +125,164 @@ void Menu::showTestMenu() {
             case 0:
                 break;
             case 1:
-                normalElders();
+                oneVoneI();
                 break;
             case 2:
-                //emergencyElders();
+                oneVmulI();
                 //TODO
                 break;
         }
     }
 }
 
-void Menu::normalElders() {
+void Menu::oneVoneI() {
 
+
+    cout << "\n\nOne Vehicle One iteneration\n\n";
+    showVehicles();
+    cout << "\nSelect vehicle by ID: ";
+    int vID;
+    cin >> vID;
+
+    cout << "\n HealhStationsn\n";
+    showHealthCareLocations();
+    cout << "\nSelect vehicle by ID: ";
+    int hsID;
+    cin >> hsID;
+
+    cout << "\n NursingHomes\n";
+    showNursingHomes();
+    cout << "\nSelect NursingHomes by ID: ";
+    int nsID;
+    cin >> nsID;
+
+    Vehicle * v = emeritaHealth.vehicles[vID];
+    HealthStation * hs = emeritaHealth.healthCareLocation[hsID];
+    NursingHome * ns = emeritaHealth.nursingHome[nsID];
+
+    vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(v,hs, ns);
+
+    cout << "\nPath:" << endl;
+    for (int i=0; i < result.size(); i++) {
+        result[i]->getInfo().print();
+    }
+
+    drawGraphFromFile("teste", 1234, result);
 }
 
-void Menu::emergencyElders() {
-    //TODO
-    /*
-     * 1 - Search nearest emergency vehicle for elder
-        * - search all healthCare for an emergency vehicle
-        * - for every vehicle calculate distance to nursinghome
-        * - update vehicle with minimum distance
-        * - remove from station/update status
-    2 - Save path from origin HealthCare
-    3 - Calculate path to nearest HealthCare
-    4 - Remove Elder from nursingHome
-    5 - update vehicle status?
-    */
+void Menu::oneVmulI() {
+
+    cout << "\n\nOne Vehicle One iteneration\n\n";
+    showVehicles();
+    cout << "\nSelect vehicle by ID: ";
+    int vID;
+    cin >> vID;
+
+    cout << "\n HealhStationsn\n";
+    showHealthCareLocations();
+    cout << "\nSelect vehicle by ID: ";
+    int hsID;
+    cin >> hsID;
+
+
+    Vehicle * v = emeritaHealth.vehicles[vID];
+    HealthStation * hs = emeritaHealth.healthCareLocation[hsID];
+
+    vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleMultipleItineration(v, hs);
+
+    cout << "\nPath:" << endl;
+    for (int i=0; i < result.size(); i++) {
+        result[i]->getInfo().print();
+    }
+    unsigned int port = 1234;
+    std:string test = "test";
+    drawGraphFromFile(test, port, result);
+}
+
+void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<MapPoint> *> path){
+    std::ifstream nodes("../files/maps/4x4/nodes.txt");
+    std::ifstream edges("../files/maps/4x4/edges.txt");
+    std::ifstream window("../files/maps/window.txt");
+
+    std::string line, background_path;
+    std::istringstream iss;
+    unsigned int n_nodes, n_edges, height, width, v1, v2, type, scale, dynamic, thickness, size, dashed, curved;
+    float x, y;
+    int id;
+    char color[20], label[256], icon_path[256], flow[256], weight[256];
+
+    window >> width >> height >> dynamic >> scale >> dashed >> curved >> background_path;
+    GraphViewer *gv = new GraphViewer(width, height, dynamic, port);
+    gv->setBackground(background_path);
+    gv->createWindow(width, height);
+    gv->defineEdgeDashed(dashed);
+    gv->defineEdgeCurved(curved);
+
+    // read num of nodes
+    std::getline(nodes, line);
+    iss.str(line);
+    iss >> n_nodes;
+
+    // draw nodes
+    string nodeDefaultColor = "cyan";
+    string nodePathColor = "red";
+    label[0] = '-';
+    size = 1000;
+    icon_path[0] = '-';
+
+    for(int i = 0; i < n_nodes;i++) {
+        std::getline(nodes, line);
+        sscanf( line.c_str(), "(%i, %f, %f,)", &id, &x, &y);
+        gv->addNode(id , x*scale, y*scale);
+        gv->setVertexColor(id, nodeDefaultColor);
+        for(unsigned int j = 0; j < path.size(); j++) {
+            if(id == path[j]->getInfo().getID()) {
+                gv->setVertexColor(id, nodePathColor);
+                break;
+            }
+        }
+        if (label[0] != '-')
+            gv->setVertexLabel(i, label);
+        if (icon_path[0] != '-')
+            gv->setVertexIcon(i, std::string(icon_path));
+        gv->setVertexSize(i, size);
+    }
+
+    // read num of edges
+    std::getline(edges, line);
+    sscanf( line.c_str(), "%d", &n_edges);
+
+    //draw edges
+    type = EdgeType::UNDIRECTED;
+    string defaultEdgeColor = "cyan";
+    string pathEdgeColor = "red";
+    thickness = 100;
+    label[0] = '-';
+    flow[0] = '%';
+    weight[0] = '%';
+
+    for(int i = 0; i < n_edges ; i++) {
+        std::getline(edges, line);
+
+        sscanf( line.c_str(), "(%u, %u)", &v1, &v2);
+        (type)? gv->addEdge(i, v1, v2, EdgeType::DIRECTED): gv->addEdge(i, v1, v2, EdgeType::UNDIRECTED);
+        gv->setEdgeColor(i, defaultEdgeColor);
+        for(unsigned int j = 0; j < path.size(); j++) {
+            if(v1 == path[j]->getInfo().getID()){
+                if(v2 == path[j+1]->getInfo().getID()){
+                    gv->setEdgeColor(i, pathEdgeColor);
+                    break;
+                }
+            }
+        }
+        gv->setEdgeThickness(i, thickness);
+        if (label[0] != '-')
+            gv->setEdgeLabel(i, label);
+        if (flow[0] != '%')
+            gv->setEdgeFlow(i, atoi(flow));
+        if (weight[0] != '%')
+            gv->setEdgeWeight(i, atoi(weight));
+    }
+
+    gv->rearrange();
 }
