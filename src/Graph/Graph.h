@@ -62,10 +62,15 @@ public:
 
 	vector<Edge<T>  > getAdj() const;
 
+
+
 	int getX() {return this->x;};
 	int getY() {return this->y;};
 };
-
+template <class T>
+vector<Edge<T> > Vertex<T>::getAdj() const{
+    return adj;
+}
 
 template <class T>
 struct vertex_greater_than {
@@ -296,8 +301,11 @@ Graph<T> * Graph<T>::preProcessGraph() {
         }
     }
     for (auto v : vertexSet)
-        if (!v->hidden)
-            resultGraph->addVertexPointer(v);
+        if (!v->hidden) {
+            if(v->adj.size() > 0)
+                resultGraph->addVertexPointer(v);
+        }
+
     cout << "Done(" << countRedundant << " Redundant Nodes, "<< countRedundantNotFixed  <<" Found)" << endl;
     return resultGraph;
 }

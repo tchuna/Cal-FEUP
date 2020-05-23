@@ -266,7 +266,40 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
     flow[0] = '%';
     weight[0] = '%';
 
-    for(int i = 0; i < n_edges ; i++) {
+    int edgeId = 0;
+
+    for(unsigned int i = 0; i < emeritaHealth.originalGraph->getVertexSet().size(); i++)  {
+        if(emeritaHealth.originalGraph->getVertexSet()[i]->getAdj().size()){
+            cout << "Node " << emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID()<< endl;
+        }
+
+        for(unsigned int j = 0; j < emeritaHealth.originalGraph->getVertexSet()[i]->getAdj().size(); j++) {
+            edgeId++;
+            (type)? gv->addEdge(edgeId,emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(),
+                    emeritaHealth.originalGraph->getVertexSet()[i]->getAdj()[j].getNode()->getInfo().getID(),
+                    EdgeType::DIRECTED): gv->addEdge(edgeId, emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(),
+                                                     emeritaHealth.originalGraph->getVertexSet()[i]->getAdj()[j].getNode()->getInfo().getID()
+                                                     , EdgeType::UNDIRECTED);
+
+            gv->setEdgeColor(edgeId, defaultEdgeColor);
+            for(unsigned int k = 0; k < path.size(); k++) {
+                if(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID() == path[k]->getInfo().getID()){
+                    if(emeritaHealth.originalGraph->getVertexSet()[i]->getAdj()[j].getNode()->getInfo().getID() == path[k+1]->getInfo().getID()){
+                        gv->setEdgeColor(edgeId, pathEdgeColor);
+                        break;
+                    }
+                }
+                gv->setEdgeThickness(edgeId, thickness);
+                if (label[0] != '-')
+                    gv->setEdgeLabel(edgeId, label);
+                if (flow[0] != '%')
+                    gv->setEdgeFlow(edgeId, atoi(flow));
+                if (weight[0] != '%')
+                    gv->setEdgeWeight(edgeId, atoi(weight));
+        }
+    }
+
+    /*for(int i = 0; i < n_edges ; i++) {
         std::getline(edges, line);
 
         sscanf( line.c_str(), "(%u, %u)", &v1, &v2);
@@ -288,7 +321,7 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
                 gv->setEdgeFlow(i, atoi(flow));
             if (weight[0] != '%')
                 gv->setEdgeWeight(i, atoi(weight));
-        }
+        }*/
 
     }
 

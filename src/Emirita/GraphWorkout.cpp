@@ -276,6 +276,8 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
     cout<<"floyd3 end"<<endl;
     vector<Vertex<MapPoint> * > error;
     if(temp.size()==0 || result.size()==0 ){
+        cout << "result: " << result.size();
+        cout << " temp: " << temp.size();
         cout << "\nPath does not exist";
         //exit (EXIT_FAILURE);
         return error;
