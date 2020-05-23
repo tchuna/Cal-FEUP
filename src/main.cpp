@@ -5,6 +5,7 @@
 #include "Map/MapPoint.h"
 #include "Graph/Graph.h"
 #include "../Emirita/GraphWorkout.h"
+#include "Menu/Menu.h"
 
 
 using namespace std;
@@ -16,13 +17,21 @@ int main() {
     Graph<unsigned long> graph;
     GraphWorkout emeritaHealth;
     emeritaHealth.constructGraph();
-    emeritaHealth.originalGraph->preProcessGraph();
+    emeritaHealth.originalGraph = emeritaHealth.originalGraph->preProcessGraph();
     emeritaHealth.addData();
     emeritaHealth.addVehicles();
     emeritaHealth.addNursingHome();
     emeritaHealth.addHealthStation();
     //result=emeritaHealth.oneVehicleOneItineration();
     //result=emeritaHealth.oneVehicleMultipleItineration();
+
+
+//    for(unsigned int i = 0; i < emeritaHealth.nursingHome.size(); i++) {
+//        emeritaHealth.nursingHome[i]->print();
+//    }
+//    for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
+//        emeritaHealth.healthCareLocation[i]->print();
+//    }
 
     Menu menu =  Menu(emeritaHealth);
     menu.start();
@@ -47,29 +56,10 @@ int main() {
 
     /*for(int i=0;i<emeritaHealth.nursingHome.size();i++){
         emeritaHealth.nursingHome[i]->print();
-
-    }*/
-
-
-    if(isconnect){
-        cout<<"\n\n"<<endl;
-        cout<<"is strongly connect"<<endl;
-    }else{
-        cout<<"\n\n"<<endl;
-        cout<<"is Not strongly connect"<<endl;
+*/
     }
 
-    vector<vector<unsigned long long>> tags=file.loadTags();
 
-    //cout<<"\n"<<tags.size()<<endl;
-    /*for(int i=0;i<emeritaHealth.nursingHome.size();i++){
-        emeritaHealth.nursingHome[i]->print();
-
-    }*/
-
-   /* for(int i=0;i<emeritaHealth.healthCareLocation.size();i++){
-        emeritaHealth.healthCareLocation[i]->print();
-    }*/
 
 	return 0;
 }

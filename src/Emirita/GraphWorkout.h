@@ -32,6 +32,8 @@ public:
 
     vector<HealthStation *> healthCareLocation;
 
+    vector<Vertex<MapPoint> * > resultPath;
+
 
     void loadGraph();
     Graph<MapPoint> * constructGraph();
@@ -55,6 +57,8 @@ public:
     vector<vector<Vertex<MapPoint>*>> multipleVehicleMultipleItineration(HealthStation * hs, int vehiclesCapacity);
 
     void distBetHealthLocation(int vertexPos, bool isSort);
+
+    bool checkVertexInGraph(unsigned long long id);
 
 };
 

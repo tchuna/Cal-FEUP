@@ -73,13 +73,13 @@ void Menu::showBasic() {
 }
 
 void Menu::showMapPoints(){
-    for(unsigned int i = 0; i < emeritaHealth.points.size(); i++) {
+    for(unsigned int i = 0; i < emeritaHealth.originalGraph->getVertexSet().size(); i++) {
         cout << "Point["<< i << "]: ";
-        emeritaHealth.points[i]->print();
+        emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().print();
     }
 }
 
-void Menu::showMapEdges(){
+void Menu::showMapEdges(){ //TODO
     for(unsigned int i = 0; i < emeritaHealth.connectP.size(); i++) {
         cout << "Edge["<< i << "]: ";
         emeritaHealth.connectP[i]->print();
@@ -200,8 +200,8 @@ void Menu::oneVmulI() {
 }
 
 void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<MapPoint> *> path){
-    std::ifstream nodes("../files/maps/4x4/nodes.txt");
-    std::ifstream edges("../files/maps/4x4/edges.txt");
+    std::ifstream nodes("../files/maps/Ermesinde/nodes.txt");
+    std::ifstream edges("../files/maps/Ermesinde/edges.txt");
     std::ifstream window("../files/maps/window.txt");
 
     std::string line, background_path;
@@ -230,14 +230,19 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
     size = 10;
     icon_path[0] = '-';
 
-    for(int i = 0; i < n_nodes;i++) {
-        std::getline(nodes, line);
-        sscanf( line.c_str(), "(%i, %f, %f,)", &id, &x, &y);
-        gv->addNode(id , x*scale, y*scale);
-        gv->setVertexColor(id, nodeDefaultColor);
+    //yPercent = 1.0 - ((n.getY() - minY)/graphHeight*0.9 + 0.05); //+5% to have margins
+    //xPercent = (n.getX() - minX)/graphWidth*0.9 + 0.05; //*90% to be within margins
+  scale = 0.1;
+//    gv->addNode(i, (int)(xPercent*windowWidth), (int)(yPercent*windowHeight));
+    //gv->addNode(0, 0.0,0.0);
+    for(unsigned int i = 0; i < emeritaHealth.originalGraph->getVertexSet().size(); i++) {
+        gv->addNode(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(),
+                    emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getX()*scale,
+                    emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getY()*scale);
+        gv->setVertexColor(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(), nodeDefaultColor);
         for(unsigned int j = 0; j < path.size(); j++) {
-            if(id == path[j]->getInfo().getID()) {
-                gv->setVertexColor(id, nodePathColor);
+            if(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID() == path[j]->getInfo().getID()) {
+                gv->setVertexColor(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(), nodePathColor);
                 break;
             }
         }
@@ -246,6 +251,7 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
             gv->setVertexIcon(i, std::string(icon_path));
         gv->setVertexSize(i, size);
     }
+
 
     // read num of edges
     std::getline(edges, line);
@@ -264,23 +270,26 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
         std::getline(edges, line);
 
         sscanf( line.c_str(), "(%u, %u)", &v1, &v2);
-        (type)? gv->addEdge(i, v1, v2, EdgeType::DIRECTED): gv->addEdge(i, v1, v2, EdgeType::UNDIRECTED);
-        gv->setEdgeColor(i, defaultEdgeColor);
-        for(unsigned int j = 0; j < path.size(); j++) {
-            if(v1 == path[j]->getInfo().getID()){
-                if(v2 == path[j+1]->getInfo().getID()){
-                    gv->setEdgeColor(i, pathEdgeColor);
-                    break;
+        if(emeritaHealth.checkVertexInGraph(v1) && emeritaHealth.checkVertexInGraph(v2)) {
+            (type)? gv->addEdge(i, v1, v2, EdgeType::DIRECTED): gv->addEdge(i, v1, v2, EdgeType::UNDIRECTED);
+            gv->setEdgeColor(i, defaultEdgeColor);
+            for(unsigned int j = 0; j < path.size(); j++) {
+                if(v1 == path[j]->getInfo().getID()){
+                    if(v2 == path[j+1]->getInfo().getID()){
+                        gv->setEdgeColor(i, pathEdgeColor);
+                        break;
+                    }
                 }
             }
+            gv->setEdgeThickness(i, thickness);
+            if (label[0] != '-')
+                gv->setEdgeLabel(i, label);
+            if (flow[0] != '%')
+                gv->setEdgeFlow(i, atoi(flow));
+            if (weight[0] != '%')
+                gv->setEdgeWeight(i, atoi(weight));
         }
-        gv->setEdgeThickness(i, thickness);
-        if (label[0] != '-')
-            gv->setEdgeLabel(i, label);
-        if (flow[0] != '%')
-            gv->setEdgeFlow(i, atoi(flow));
-        if (weight[0] != '%')
-            gv->setEdgeWeight(i, atoi(weight));
+
     }
 
     gv->rearrange();

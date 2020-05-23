@@ -101,9 +101,9 @@ bool  GraphWorkout::addNursingHome(){
     for(int i=0;i<data[NURSINGHOME].size();i++){
         int type;
         type = rand() % 5;
-        for(int j=0;j<points.size();j++){
-            if(data[NURSINGHOME][i]==points[j]->getID()){
-                NursingHome* aux = new NursingHome(*points[j],type);
+        for(int j=0;j<originalGraph->getVertexSet().size();j++){
+            if(data[NURSINGHOME][i]==originalGraph->getVertexSet()[j]->getInfo().getID()){
+                NursingHome* aux = new NursingHome(originalGraph->getVertexSet()[j]->getInfo(),type);
                 if (find(nursingHome.begin(), nursingHome.end(), aux) == nursingHome.end()) {//not in the vector, so it will be added
                     nursingHome.push_back(aux);
                     //aux->print();
@@ -125,9 +125,9 @@ bool  GraphWorkout::addHealthStation(){
     for(int i=0;i<data[URGENCY].size();i++){
         int type;
         type = 1;
-        for(int j=0;j<points.size();j++){
-            if(data[URGENCY][i]==points[j]->getID()){
-                HealthStation* aux = new HealthStation(*points[j],type);
+        for(int j=0;j<originalGraph->getVertexSet().size();j++){
+            if(data[URGENCY][i]==originalGraph->getVertexSet()[j]->getInfo().getID()){
+                HealthStation* aux = new HealthStation(originalGraph->getVertexSet()[j]->getInfo(),type);
                 if (find(healthCareLocation.begin(), healthCareLocation.end(), aux) == healthCareLocation.end()) {//not in the vector, so it will be added
                     healthCareLocation.push_back(aux);
                     //aux->print();
@@ -140,9 +140,9 @@ bool  GraphWorkout::addHealthStation(){
     for(int i=0;i<data[HEALTHCENTER].size();i++){
         int type;
         type = 0;
-        for(int j=0;j<points.size();j++){
-            if(data[HEALTHCENTER][i]==points[j]->getID()){
-                HealthStation* aux = new HealthStation(*points[j],type);
+        for(int j=0;j<originalGraph->getVertexSet().size();j++){
+            if(data[HEALTHCENTER][i]==originalGraph->getVertexSet()[j]->getInfo().getID()){
+                HealthStation* aux = new HealthStation(originalGraph->getVertexSet()[j]->getInfo(),type);
 
                 if (find(healthCareLocation.begin(), healthCareLocation.end(), aux) == healthCareLocation.end()) {//not in the vector, so it will be added
                     healthCareLocation.push_back(aux);
@@ -274,13 +274,15 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
     cout<<"floyd2 end"<<endl;
     temp = originalGraph->getfloydWarshallPath(nodes.second->getInfo(), healthstation);
     cout<<"floyd3 end"<<endl;
-    if(temp.size()==0 && result.size()==0 ){
-
-        exit (EXIT_FAILURE);
+    vector<Vertex<MapPoint> * > error;
+    if(temp.size()==0 || result.size()==0 ){
+        cout << "\nPath does not exist";
+        //exit (EXIT_FAILURE);
+        return error;
     }
 
     result.insert(result.end(), temp.begin() + 1, temp.end());
-
+    resultPath = result;
     return result;
 
 
@@ -361,4 +363,11 @@ void  GraphWorkout::distBetHealthLocation(int vertexPos, bool isSort){
         sort(nursingHome.begin(), nursingHome.end(),compareNursingHome());
     cout << "SORT DONE" << endl;
 
+}
+
+bool GraphWorkout::checkVertexInGraph(unsigned long long id){
+    for(unsigned int i = 0; i < originalGraph->getVertexSet().size(); i++) {
+        if(id == originalGraph->getVertexSet()[i]->getInfo().getID()) return true;
+    }
+    return false;
 }
