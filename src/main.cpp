@@ -5,18 +5,19 @@
 #include "Map/MapPoint.h"
 #include "Graph/Graph.h"
 #include "../Emirita/GraphWorkout.h"
-#include "Menu/Menu.h"
 
 
 using namespace std;
 
 int main() {
+    ReadFiles file;
+    vector<MapPoint> path;
     vector<Vertex<MapPoint> * > result;
     Graph<unsigned long> graph;
     GraphWorkout emeritaHealth;
     emeritaHealth.constructGraph();
-
-
+    emeritaHealth.originalGraph->preProcessGraph();
+    emeritaHealth.addData();
     emeritaHealth.addVehicles();
     emeritaHealth.addNursingHome();
     emeritaHealth.addHealthStation();
@@ -25,14 +26,42 @@ int main() {
 
     Menu menu =  Menu(emeritaHealth);
     menu.start();
+    bool isconnect=emeritaHealth.originalGraph->connectivity();
 
+    Vehicle* v= emeritaHealth.vehicles[0];
+    HealthStation* hs=emeritaHealth.healthCareLocation[40];
+    NursingHome* nr=emeritaHealth.nursingHome[6];
+    result=emeritaHealth.oneVehicleOneItineration(v,hs,nr);
+    //result=emeritaHealth.oneVehicleMultipleItineration(v,hs);
+
+    //path=emeritaHealth.findPath(v->getMapPoint(),hs->getMapPoint(),1);
 
     cout<<"short path:"<<endl;
     for(int i=0;i<result.size();i++){
         result[i]->getInfo().print();
 
+
+
+
+   // cout<<"short path:"<<endl;
+
+    /*for(int i=0;i<emeritaHealth.nursingHome.size();i++){
+        emeritaHealth.nursingHome[i]->print();
+
+    }*/
+
+
+    if(isconnect){
+        cout<<"\n\n"<<endl;
+        cout<<"is strongly connect"<<endl;
+    }else{
+        cout<<"\n\n"<<endl;
+        cout<<"is Not strongly connect"<<endl;
     }
 
+    vector<vector<unsigned long long>> tags=file.loadTags();
+
+    //cout<<"\n"<<tags.size()<<endl;
     /*for(int i=0;i<emeritaHealth.nursingHome.size();i++){
         emeritaHealth.nursingHome[i]->print();
 

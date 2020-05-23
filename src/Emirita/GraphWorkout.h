@@ -14,10 +14,10 @@
 #include "../Map/MapPoint.h"
 
 
-
 class GraphWorkout {
 public:
 
+    vector <vector<unsigned long long >>data;
     vector <MapPoint*>points;
 
     vector<ConnectPoints *>connectP;
@@ -36,24 +36,21 @@ public:
     void loadGraph();
     Graph<MapPoint> * constructGraph();
     double distanceTwoPointsOnMap(unsigned long pointX1, unsigned long pointY1,unsigned long pointX2, unsigned long pointY2);
+    NursingHome* nearNursingHome(MapPoint node);
+    HealthStation*  nearHealthStation(MapPoint node,int type);
 
-    GraphWorkout & preProcessGraph();
+    vector<MapPoint> findPath(MapPoint source, MapPoint dest ,int type);
 
-    bool addVehicles();
+        bool addVehicles();
+    bool addData();
 
     bool addNursingHome();
 
     bool addHealthStation();
 
-    vector<unsigned long long> getHealthStationIds();
-    vector<unsigned long long>  getNursingHomeIds();
-
-
     vector<Vertex<MapPoint> * >  oneVehicleOneItineration(Vehicle * vehicle , HealthStation * healthCar,NursingHome * nr);
 
     vector<Vertex<MapPoint> * > oneVehicleMultipleItineration(Vehicle * vehicle, HealthStation * healthCare);
-
-    vector<Vertex<MapPoint> *> backPreProcess(vector<Vertex<MapPoint>* > shortenedPath);
 
     vector<vector<Vertex<MapPoint>*>> multipleVehicleMultipleItineration(HealthStation * hs, int vehiclesCapacity);
 

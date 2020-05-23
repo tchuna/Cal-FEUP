@@ -33,6 +33,7 @@ public:
 
 	unsigned long long getID();
     bool operator==(const MapPoint & point) const;
+    bool operator!=(const MapPoint & point) const;
 
 	double getY();
 	double getX();

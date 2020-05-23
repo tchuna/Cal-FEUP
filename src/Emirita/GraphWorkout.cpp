@@ -8,6 +8,9 @@
 #include <algorithm>
 #include <vector>
 
+#define URGENCY  0
+#define HEALTHCENTER  1
+#define NURSINGHOME  2
 
 void GraphWorkout::loadGraph(){
     ReadFiles file;
@@ -68,46 +71,183 @@ Graph<MapPoint> *  GraphWorkout::constructGraph(){
         MapPoint node2=MapPoint(id2,x2,y2);
         originalGraph->addEdge(node1,node2,dist);
 
-       // cout<<connectP[i]->getId() << "   Point1: "<<connectP[i]->getFirstP()<<"   "<<"Point2: "<<connectP[i]->getSecondP()<<"   "<<"dist: "<<dist<<endl;
+        cout<<connectP[i]->getId() << "   Point1: "<<connectP[i]->getFirstP()<<"   "<<"Point2: "<<connectP[i]->getSecondP()<<"   "<<"dist: "<<dist<<endl;
+
     }
+}
 
 
+bool  GraphWorkout::addData(){
+    ReadFiles file;
+    data=file.loadTags();
+    //cout<<data[NURSINGHOME].size()<<endl;
 
 
 }
-
 
 bool  GraphWorkout::addVehicles(){
     ReadFiles file;
     vehicles =file.loadVehicles();
 
+
 }
 
 bool  GraphWorkout::addNursingHome(){
-    ReadFiles file;
-    nursingHome=file.loadNursingHome();
+    //ReadFiles file;
+    //nursingHome=file.loadNursingHome();
+
+    srand (time(NULL));
+
+    for(int i=0;i<data[NURSINGHOME].size();i++){
+        int type;
+        type = rand() % 5;
+        for(int j=0;j<points.size();j++){
+            if(data[NURSINGHOME][i]==points[j]->getID()){
+                NursingHome* aux = new NursingHome(*points[j],type);
+                if (find(nursingHome.begin(), nursingHome.end(), aux) == nursingHome.end()) {//not in the vector, so it will be added
+                    nursingHome.push_back(aux);
+                    //aux->print();
+                }
+            }
+        }
+    }
+
 }
+
+
 
 bool  GraphWorkout::addHealthStation(){
-    ReadFiles file;
-    healthCareLocation=file.loadHealthStation();
+    //ReadFiles file;
+    //healthCareLocation=file.loadHealthStation();
+
+    srand (time(NULL));
+
+    for(int i=0;i<data[URGENCY].size();i++){
+        int type;
+        type = 1;
+        for(int j=0;j<points.size();j++){
+            if(data[URGENCY][i]==points[j]->getID()){
+                HealthStation* aux = new HealthStation(*points[j],type);
+                if (find(healthCareLocation.begin(), healthCareLocation.end(), aux) == healthCareLocation.end()) {//not in the vector, so it will be added
+                    healthCareLocation.push_back(aux);
+                    //aux->print();
+                }
+            }
+        }
+    }
+
+
+    for(int i=0;i<data[HEALTHCENTER].size();i++){
+        int type;
+        type = 0;
+        for(int j=0;j<points.size();j++){
+            if(data[HEALTHCENTER][i]==points[j]->getID()){
+                HealthStation* aux = new HealthStation(*points[j],type);
+
+                if (find(healthCareLocation.begin(), healthCareLocation.end(), aux) == healthCareLocation.end()) {//not in the vector, so it will be added
+                    healthCareLocation.push_back(aux);
+                    //aux->print();
+                }
+
+
+            }
+        }
+    }
 
 }
 
-vector<unsigned long long>  GraphWorkout::getHealthStationIds(){
-    vector<unsigned long long> res;
-    for (auto h : healthCareLocation)
-        res.push_back(h->getMapPoint().getID());
-    return res;
+
+HealthStation* GraphWorkout::nearHealthStation(MapPoint node,int type) {
+
+    int distMinim = INT_MAX;
+    int nodePosition = -1;
+
+
+    for (unsigned int i = 0; i < healthCareLocation.size(); i++) {
+        if( healthCareLocation[i]->getType()==type){
+
+            originalGraph->dijkstraShortestPath(healthCareLocation[i]->getMapPoint());
+
+            int currentDist = originalGraph->getVertex(node)->getDist();
+            if (currentDist <= distMinim) {
+                nodePosition = i;
+                distMinim = currentDist;
+            }
+
+        }
+
+    }
+
+    return healthCareLocation[nodePosition];
+
+}
+
+NursingHome* GraphWorkout::nearNursingHome(MapPoint node) {
+    int distMinim = INT_MAX;
+    int nodePosition = -1;
+
+    originalGraph->dijkstraShortestPath(node);
+
+    for (unsigned int i = 0; i < nursingHome.size(); i++) {
+        int currentDist=originalGraph->getVertex(nursingHome[i]->getMapPoint())->getDist();
+        if (currentDist < distMinim) {
+            nodePosition  = i;
+            distMinim = currentDist;
+        }
+    }
+
+    if (nodePosition == -1) {
+        MapPoint* node= new MapPoint(-1,-1,-1);
+        NursingHome* nullNode= new NursingHome(*node,-1);
+        return nullNode;
+    } else
+        return nursingHome[nodePosition];
+
 
 }
 
 
-vector<unsigned long long>  GraphWorkout::getNursingHomeIds(){
-    vector<unsigned long long> res;
-    for (auto n : nursingHome)
-        res.push_back(n->getMapPoint().getID());
-    return res;
+vector<MapPoint> GraphWorkout::findPath(MapPoint source, MapPoint dest ,int type) {
+
+
+    HealthStation* heathType;
+
+    if (type == 1) {
+        heathType = nearHealthStation(dest, 1);
+    } else {
+        heathType = nearHealthStation(dest, 0);
+    }
+
+    cout << " Heath Station Position: " <<endl; heathType->getMapPoint().print();
+
+
+    vector<MapPoint> temp1;
+    vector<MapPoint> temp2;
+    vector<MapPoint> result;
+
+    if (heathType->getMapPoint().getID() == source.getID() && heathType->getMapPoint().getID() == dest.getID()) {
+
+        result.push_back(source);
+        result.push_back(dest);
+
+
+    } else if (heathType->getMapPoint().getID() == source.getID() || heathType->getMapPoint().getID()  == dest.getID()) {
+
+
+        result = originalGraph->getPath(source, dest);
+
+    } else {
+
+        temp1 = originalGraph->getPath(source,heathType->getMapPoint());
+        temp2 = originalGraph->getPath(heathType->getMapPoint(), dest);
+
+        temp2.erase(temp2.begin());
+
+        temp1.insert(temp1.end(), temp2.begin(), temp2.end());
+        result = temp1;
+    }
+
+    return result;
 
 }
 
@@ -116,9 +256,11 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
     MapPoint healthstation = healthCare->getMapPoint();
     MapPoint vehicle = v->getMapPoint();
     MapPoint nursinghome = nr->getMapPoint();
-    vector<Vertex<MapPoint> * > result, temp;
+    vector<Vertex<MapPoint>*> result, temp;
 
+    cout<<"floyd1"<<endl;
     originalGraph->floydWarshallShortestPath();
+    cout<<"end floyd1"<<endl;
 
 
     /*if (nursinghom.size() != 1) {
@@ -127,8 +269,16 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
     }*/
 
     pair<Vertex<MapPoint>*, Vertex<MapPoint>*> nodes = originalGraph->getTwoVertexs(vehicle,nursinghome);
+    cout<<"floyd2"<<endl;
     result = originalGraph->getfloydWarshallPath(vehicle, nursinghome);
+    cout<<"floyd2 end"<<endl;
     temp = originalGraph->getfloydWarshallPath(nodes.second->getInfo(), healthstation);
+    cout<<"floyd3 end"<<endl;
+    if(temp.size()==0 && result.size()==0 ){
+
+        exit (EXIT_FAILURE);
+    }
+
     result.insert(result.end(), temp.begin() + 1, temp.end());
 
     return result;
@@ -196,7 +346,7 @@ vector<vector<Vertex<MapPoint>*>> GraphWorkout:: multipleVehicleMultipleItinerat
         v->setVehicleCapacity(vehiclesCapacity);
         result.push_back(oneVehicleMultipleItineration(v, hs));
     }
-    
+
     return result;
 }
 
