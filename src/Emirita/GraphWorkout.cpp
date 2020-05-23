@@ -257,21 +257,23 @@ vector<MapPoint> GraphWorkout::findPath(MapPoint source, MapPoint dest ,int type
 
 }
 
+
+
 vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v , HealthStation * healthCare , NursingHome * nr, int type){ // nr = nursingHme[0]
     //type 0 = both
     //type 1 = vehicle to nursehome
     //type 2 = nursehome to healthcare
-    v->print();
-    healthCare->print();
-    nr->print();
+//    v->print();
+//    healthCare->print();
+//    nr->print();
     MapPoint healthstation = healthCare->getMapPoint();
     MapPoint vehicle = v->getMapPoint();
     MapPoint nursinghome = nr->getMapPoint();
     vector<Vertex<MapPoint>*> result, temp;
 
-    cout<<"floyd1"<<endl;
+    //cout<<"floyd1"<<endl;
    // originalGraph->floydWarshallShortestPath();
-    cout<<"end floyd1"<<endl;
+    //cout<<"end floyd1"<<endl;
 
 
     /*if (nursinghom.size() != 1) {
@@ -281,27 +283,32 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
     //type 0 = both
     //type 1 = vehicle to nursehome
     //type 2 = nursehome to healthcare
-    cout << "\nBroke: \n";
-    vehicle.print();
-    nursinghome.print();
-    cout << "\nEndBroke \n";
-    pair<Vertex<MapPoint>*, Vertex<MapPoint>*> nodes = originalGraph->getTwoVertexs(vehicle,nursinghome);
-    cout<<"floyd2"<<endl;
+    //cout << "\nBroke: \n";
+    //vehicle.print();
+    //nursinghome.print();
+    //cout << "\nEndBroke \n";
+    //pair<Vertex<MapPoint>*, Vertex<MapPoint>*> nodes = originalGraph->getTwoVertexs(vehicle,nursinghome);
+    //cout<<"floyd2"<<endl;
+    cout << "\nBOOMENTROU";
+
     if(type == 0 || type == 1) {
         result = originalGraph->getfloydWarshallPath(vehicle, nursinghome);
     }
-    cout<<"floyd2 end"<<endl;
+    //cout<<"floyd2 end"<<endl;
+    cout << "\ntype: " << type;
     if(type == 0 || type == 2) {
-        temp = originalGraph->getfloydWarshallPath(nodes.second->getInfo(), healthstation);
+        cout << "\nBOOM";
+        temp = originalGraph->getfloydWarshallPath(nursinghome, healthstation);
+        cout << "\nBOOMOUT";
     }
 
-    cout<<"floyd3 end"<<endl;
-
+    //cout<<"floyd3 end"<<endl;
+    cout << "\nJUMP";
     if(type == 1) return result;
     if(type == 2) return temp;
     if(type == 0) {
         vector<Vertex<MapPoint> * > error;
-        if(temp.size()==0 && result.size()==0){
+        if(temp.size()==0 || result.size()==0){
             cout << "result: " << result.size();
             cout << " temp: " << temp.size();
             cout << "\nPath does not exist";
@@ -312,7 +319,7 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
         result.insert(result.end(), temp.begin() + 1, temp.end());
     }
 
-    resultPath = result;
+    //resultPath = result;
     return result;
 
 }

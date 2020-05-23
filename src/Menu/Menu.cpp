@@ -146,47 +146,53 @@ void Menu::oneVoneIHARD() {
     cout << "\nSelect NursingHomes by ID: ";
     int nsID;
     cin >> nsID;
+    cin.clear();
     NursingHome * ns = emeritaHealth.nursingHome[nsID];
-    vector<vector<Vertex<MapPoint> * >> vehiclesPath;
+
+
     HealthStation * hs;
+
     vector<Vehicle*> vehiclesWithPath;
+    vector<vector<Vertex<MapPoint> * >> vehiclesPath;
+
+    vector<HealthStation*> healthWithPath;
+    vector<vector<Vertex<MapPoint> * >> healthPath;
+
     vector<Vertex<MapPoint> * > path;
 
-    cout << "teste\n";
     for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
         path = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[i], hs, ns, 1);
-        cout << "teste2\n";
         if(path.size() > 0) {
-            cout << "teste3";
             vehiclesPath.push_back(path);
             vehiclesWithPath.push_back(emeritaHealth.vehicles[i]);
         }
 
     }
     cout << "\nListing Vehicles with path: ";
-    for(unsigned int i = 0; i < vehiclesWithPath.size(); i++) {
-        cout << "ID: "<< i << vehiclesWithPath[i]->print();
+    for(unsigned int j = 0; j < vehiclesWithPath.size(); j++) {
+        cout << "ID: "<< j;
+        vehiclesWithPath[j]->print();
     }
 
-    vector<vector<Vertex<MapPoint> * >> healthStationPath;
-    vector<HealthStation*> healthStationsWithPath;
-    Vehicle * emptyVehicle;
-    /*cout << "\nListing HealthCare with path: \n";
-    for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
-        path = emeritaHealth.oneVehicleOneItineration(emptyVehicle, emeritaHealth.healthCareLocation[i], ns, 2);
-        cout << "teste2\n";
+    /*
+    for(unsigned int k = 0; k < emeritaHealth.healthCareLocation.size(); k++) {
+        if(k == 2) continue;
+        cout << "\nBEFOREBOOM: " << k << endl;
+        path = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[0], emeritaHealth.healthCareLocation[k], ns, 2);
         if(path.size() > 0) {
-            cout << "teste3\n";
-            healthStationPath.push_back(path);
-            healthStationsWithPath.push_back(emeritaHealth.healthCareLocation[i]);
+            healthPath.push_back(path);
+            healthWithPath.push_back(emeritaHealth.healthCareLocation[k]);
         }
 
     }
 
-    cout << "\nListing Vehicles with path: ";
-    for(unsigned int i = 0; i < healthStationsWithPath.size(); i++) {
-        healthStationsWithPath[i]->print();
+    cout << "\nListing HealthStation with path: ";
+    for(unsigned int j = 0; j < healthWithPath.size(); j++) {
+        cout << "ID: "<< j;
+        healthWithPath[j]->print();
     }*/
+
+
 }
 
 void Menu::oneVoneI() {
