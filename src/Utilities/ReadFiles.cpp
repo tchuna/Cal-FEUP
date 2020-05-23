@@ -306,7 +306,6 @@ vector<MapPoint*> ReadFiles::loadMapPoints() {
 
         MapPoint* trt = new MapPoint(id,x,y);
 
-
         if (find(result.begin(), result.end(), trt) == result.end()) {//not in the vector, so it will be added
             result.push_back(trt);
         }

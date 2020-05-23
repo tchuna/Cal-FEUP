@@ -15,6 +15,7 @@ int main() {
     vector<Vertex<MapPoint> * > result;
     GraphWorkout emeritaHealth;
     emeritaHealth.constructGraph();
+    emeritaHealth.originalGraph->preProcessGraph();
     emeritaHealth.addData();
     emeritaHealth.addVehicles();
     emeritaHealth.addNursingHome();
@@ -22,8 +23,8 @@ int main() {
     bool isconnect=emeritaHealth.originalGraph->connectivity();
 
     Vehicle* v= emeritaHealth.vehicles[0];
-    HealthStation* hs=emeritaHealth.healthCareLocation[0];
-    NursingHome* nr=emeritaHealth.nursingHome[2];
+    HealthStation* hs=emeritaHealth.healthCareLocation[40];
+    NursingHome* nr=emeritaHealth.nursingHome[6];
     result=emeritaHealth.oneVehicleOneItineration(v,hs,nr);
     //result=emeritaHealth.oneVehicleMultipleItineration(v,hs);
 
@@ -33,9 +34,10 @@ int main() {
 
 
 
-  /*  cout<<"short path:"<<endl;
-    for(int i=0;i<result.size();i++){
-        result[i]->getInfo().print();
+   // cout<<"short path:"<<endl;
+
+    /*for(int i=0;i<emeritaHealth.nursingHome.size();i++){
+        emeritaHealth.nursingHome[i]->print();
 
     }*/
 

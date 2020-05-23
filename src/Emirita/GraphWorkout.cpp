@@ -103,7 +103,7 @@ bool  GraphWorkout::addNursingHome(){
         type = rand() % 5;
         for(int j=0;j<points.size();j++){
             if(data[NURSINGHOME][i]==points[j]->getID()){
-               NursingHome* aux = new NursingHome(*points[j],type);
+                NursingHome* aux = new NursingHome(*points[j],type);
                 if (find(nursingHome.begin(), nursingHome.end(), aux) == nursingHome.end()) {//not in the vector, so it will be added
                     nursingHome.push_back(aux);
                     //aux->print();
@@ -256,10 +256,11 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
     MapPoint healthstation = healthCare->getMapPoint();
     MapPoint vehicle = v->getMapPoint();
     MapPoint nursinghome = nr->getMapPoint();
-    vector<Vertex<MapPoint> * > result, temp;
-    
+    vector<Vertex<MapPoint>*> result, temp;
+
     cout<<"floyd1"<<endl;
     originalGraph->floydWarshallShortestPath();
+    cout<<"end floyd1"<<endl;
 
 
     /*if (nursinghom.size() != 1) {
@@ -270,7 +271,14 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
     pair<Vertex<MapPoint>*, Vertex<MapPoint>*> nodes = originalGraph->getTwoVertexs(vehicle,nursinghome);
     cout<<"floyd2"<<endl;
     result = originalGraph->getfloydWarshallPath(vehicle, nursinghome);
+    cout<<"floyd2 end"<<endl;
     temp = originalGraph->getfloydWarshallPath(nodes.second->getInfo(), healthstation);
+    cout<<"floyd3 end"<<endl;
+    if(temp.size()==0 && result.size()==0 ){
+
+        exit (EXIT_FAILURE);
+    }
+
     result.insert(result.end(), temp.begin() + 1, temp.end());
 
     return result;

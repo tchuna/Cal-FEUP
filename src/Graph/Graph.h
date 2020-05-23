@@ -40,9 +40,11 @@ class Vertex {
 	double dist;
 
 public:
+    bool hidden;
+    vector<Vertex<T>* > in;
     size_t posAtVec;
 	vector<Edge<T>  > adj;
-	Vertex(T in);
+    Vertex(T in);
 	friend class Graph<T>;
 
 	void addEdge(Vertex<T> *dest, double w);
@@ -69,8 +71,24 @@ struct vertex_greater_than {
     }
 };
 
-
 template <class T>
+bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
+    d->indegree--;
+    for (auto i = adj.begin(); i != adj.end(); i++){//iterate adjacent of current
+        if (i->dest = d) {//if one of the adjacent is
+            for (typename vector<Vertex<T>* >::iterator vit = i->dest->in.begin(); vit != i->dest->in.end(); vit++) {//remove from the "in"
+                if ((*vit) == this) {
+                    i->dest->in.erase(vit);
+                    adj.erase(i);//only delete it afterwards
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+    return false;
+}
+/*template <class T>
 bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
 	d->indegree--;
 	typename vector<Edge<T> >::iterator it= adj.begin();
@@ -83,7 +101,7 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
 		else it++;
 	}
 	return false;
-}
+}*/
 
 
 template <class T>
@@ -91,11 +109,19 @@ Vertex<T>::Vertex(T in): info(in), visited(false), processing(false), indegree(0
 	path = NULL;
 }
 
+/*template <class T>
+void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
+    Edge<T> edgeD(dest, this->info.distance(dest->info));//requires the template to have a distance method, this->info.distance(dest->info)
+    //edgeD.dest->in++;// updates the number of vertexes going into the destination Vertex
+    edgeD.dest->in.push_back(this);//Adds this vertex to the vector of vertexes going into the new one
+    adj.push_back(edgeD);
+}*/
 
 template <class T>
 void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
 	Edge<T> edgeD(dest,w);
-	adj.push_back(edgeD);
+    edgeD.dest->in.push_back(this);//Adds this vertex to the vector of vertexes going into the new one
+    adj.push_back(edgeD);
 }
 
 
@@ -135,7 +161,20 @@ public:
 	friend class Graph<T>;
 	friend class Vertex<T>;
     Vertex<T>* getNode();
+    vector<Vertex<T> *> hidden;
+    static Edge<T> mergeEdges(Edge<T> left, Edge<T> right, Vertex<T> * removedVertex);
 };
+template<class T>
+Edge<T> Edge<T>::mergeEdges(Edge<T> left, Edge<T> right, Vertex<T> * removedVertex) {
+    Edge<T> res = Edge<T>(right.dest, left.weight + right.weight);
+    //add the hidden vertexes by the correct order, from left to right
+    for (auto v : left.hidden)
+        res.hidden.push_back(v);
+    res.hidden.push_back(removedVertex);
+    for (auto v : right.hidden)
+        res.hidden.push_back(v);
+    return res;
+}
 
 template <class T>
 Edge<T>::Edge(Vertex<T> *d, double w): dest(d), weight(w){}
@@ -194,11 +233,71 @@ public:
 	int edgeCost(int vOrigIndex, int vDestIndex);
     vector<Vertex<T> * > getfloydWarshallPath(const T &origin, const T &dest);
 	void getfloydWarshallPathAux(int index1, int index2, vector<Vertex<T> * >  &res );
+    Graph<T> * preProcessGraph();
+    bool addVertexPointer(Vertex<T> * in);
 
 	
 	int getWeight(const T &source, const T &dest);
 };
 
+template<class T>
+inline bool Graph<T>::addVertexPointer(Vertex<T> * in) {
+    typename vector<Vertex<T>*>::iterator it = vertexSet.begin();
+    typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
+    for (; it != ite; it++)
+        if ((*it)->info == in->info) return false;
+    in->posAtVec = vertexSet.size();
+    vertexSet.push_back(in);
+    return true;
+}
+
+template<class T>
+Graph<T> * Graph<T>::preProcessGraph() {
+    cout << "Preprocessing...";
+    Graph<T> * resultGraph = new Graph<T>;
+    for (auto v : vertexSet)
+        v->hidden = false;
+
+    int countRedundant = 0;
+    int countRedundantNotFixed = 0;
+    for (auto v : vertexSet) {
+        if (v->adj.size() == 1 && v->in.size() == 1) {
+            cout << "---->REDUNDANT NODE: " <<endl; v->getInfo().print();
+            countRedundantNotFixed++;
+            Edge<T> enter = Edge<T>(nullptr, 0);
+            bool found = false;
+
+            typename vector<Edge<T>>::iterator eit;
+
+            for (eit = v->in[0]->adj.begin(); eit != v->in[0]->adj.end(); eit++) {
+                if (eit->dest == v) {
+                    found = true;
+                    enter = (*eit);
+                    break;
+                }
+            }
+            if (found) {
+                Edge<T> sum = Edge<T>::mergeEdges(enter, v->adj[0], v);
+                v->in[0]->adj.erase(eit);
+                v->in[0]->adj.push_back(sum);
+                for (auto i = v->adj[0].dest->in.begin(); i != v->adj[0].dest->in.end(); i++) {
+                    if ((*i)->getInfo() == v->getInfo()) {
+                        v->adj[0].dest->in.erase(i);
+                        countRedundant++;
+                        break;
+                    }
+                }
+                v->adj[0].dest->in.push_back(v->in[0]);
+                v->hidden = true;
+            }
+        }
+    }
+    for (auto v : vertexSet)
+        if (!v->hidden)
+            resultGraph->addVertexPointer(v);
+    cout << "Done(" << countRedundant << " Redundant Nodes, "<< countRedundantNotFixed  <<" Found)" << endl;
+    return resultGraph;
+}
 
 template <class T>
 int Graph<T>::getNumVertex() const {
