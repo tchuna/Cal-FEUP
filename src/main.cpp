@@ -37,15 +37,15 @@ int main() {
     menu.start();
     bool isconnect=emeritaHealth.originalGraph->connectivity();
 
-    Vehicle* v= emeritaHealth.vehicles[0];
+    /*Vehicle* v= emeritaHealth.vehicles[0];
     HealthStation* hs=emeritaHealth.healthCareLocation[40];
     NursingHome* nr=emeritaHealth.nursingHome[6];
-    result=emeritaHealth.oneVehicleOneItineration(v,hs,nr);
+    result=emeritaHealth.oneVehicleOneItineration(v,hs,nr);*/
     //result=emeritaHealth.oneVehicleMultipleItineration(v,hs);
 
     //path=emeritaHealth.findPath(v->getMapPoint(),hs->getMapPoint(),1);
 
-    cout<<"short path:"<<endl;
+    /*cout<<"short path:"<<endl;
     for(int i=0;i<result.size();i++){
         result[i]->getInfo().print();
 
@@ -54,10 +54,10 @@ int main() {
 
    // cout<<"short path:"<<endl;
 
-    /*for(int i=0;i<emeritaHealth.nursingHome.size();i++){
+    for(int i=0;i<emeritaHealth.nursingHome.size();i++){
         emeritaHealth.nursingHome[i]->print();
-*/
-    }
+
+    }*/
 
 
 
