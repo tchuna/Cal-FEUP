@@ -18,6 +18,7 @@ int main() {
     GraphWorkout emeritaHealth;
     emeritaHealth.constructGraph();
     emeritaHealth.originalGraph = emeritaHealth.originalGraph->preProcessGraph();
+    emeritaHealth.originalGraph->floydWarshallShortestPath();
     emeritaHealth.addData();
     emeritaHealth.addVehicles();
     emeritaHealth.addNursingHome();

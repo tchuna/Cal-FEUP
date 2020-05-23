@@ -88,8 +88,14 @@ bool  GraphWorkout::addData(){
 bool  GraphWorkout::addVehicles(){
     ReadFiles file;
     vehicles =file.loadVehicles();
-
-
+    vector<Vehicle*> result;
+    for(unsigned int i= 0; i < vehicles.size(); i++) {
+        for(unsigned int j = 0; j < originalGraph->getVertexSet().size(); j++) {
+            if(vehicles[i]->getMapPoint().getID() == originalGraph->getVertexSet()[j]->getInfo().getID())
+                result.push_back(vehicles[i]);
+        }
+    }
+    vehicles = result;
 }
 
 bool  GraphWorkout::addNursingHome(){
@@ -255,13 +261,16 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
     //type 0 = both
     //type 1 = vehicle to nursehome
     //type 2 = nursehome to healthcare
+    v->print();
+    healthCare->print();
+    nr->print();
     MapPoint healthstation = healthCare->getMapPoint();
     MapPoint vehicle = v->getMapPoint();
     MapPoint nursinghome = nr->getMapPoint();
     vector<Vertex<MapPoint>*> result, temp;
 
     cout<<"floyd1"<<endl;
-    originalGraph->floydWarshallShortestPath();
+   // originalGraph->floydWarshallShortestPath();
     cout<<"end floyd1"<<endl;
 
 
@@ -272,6 +281,10 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
     //type 0 = both
     //type 1 = vehicle to nursehome
     //type 2 = nursehome to healthcare
+    cout << "\nBroke: \n";
+    vehicle.print();
+    nursinghome.print();
+    cout << "\nEndBroke \n";
     pair<Vertex<MapPoint>*, Vertex<MapPoint>*> nodes = originalGraph->getTwoVertexs(vehicle,nursinghome);
     cout<<"floyd2"<<endl;
     if(type == 0 || type == 1) {
