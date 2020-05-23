@@ -272,7 +272,7 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
     char color[20], icon_path[256], flow[256], weight[256];
 
     window >> width >> height >> dynamic >> scale >> dashed >> curved >> background_path;
-    GraphViewer *gv = new GraphViewer(width, height, dynamic, port);
+    GraphViewer *gv = new GraphViewer(width, height, dynamic, 5002);
     gv->setBackground(background_path);
     gv->createWindow(width, height);
     gv->defineEdgeDashed(dashed);
