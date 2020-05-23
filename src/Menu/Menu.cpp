@@ -304,8 +304,8 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
 
         }
         for(unsigned int k = 0; k < emeritaHealth.getHealthStationID().size(); k++) {
-            if(emeritaHealth.getNursingHomesID()[k] == emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID())
-                gv->setVertexColor(emeritaHealth.originalGraph->getVertexSet()[k]->getInfo().getID(), healthColor);
+            if(emeritaHealth.getHealthStationID()[k] == emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID())
+                gv->setVertexColor(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(), healthColor);
                 break;
 
         }
