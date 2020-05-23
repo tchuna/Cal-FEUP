@@ -116,6 +116,7 @@ void Menu::showTestMenu() {
         cout << "\nTest Menu\n";
         cout << "1 - One Vehicle One Iteneration\n";
         cout << "2 - On vehicle Multiple Iteneration\n";
+        cout << "3 - One Vehicle One Iteneration HARD\n";
         cout << "0 - Exit\n\n";
 
         cout << "Option: ";
@@ -131,7 +132,39 @@ void Menu::showTestMenu() {
                 oneVmulI();
                 //TODO
                 break;
+            case 3:
+                oneVoneIHARD();
+                break;
         }
+    }
+}
+
+void Menu::oneVoneIHARD() {
+    cout << "\n\nOne Vehicle One iteneration HARD\n\n";
+    cout << "\n NursingHomes\n";
+    showNursingHomes();
+    cout << "\nSelect NursingHomes by ID: ";
+    int nsID;
+    cin >> nsID;
+    NursingHome * ns = emeritaHealth.nursingHome[nsID];
+    vector<vector<Vertex<MapPoint> * >> vehiclesPath;
+    HealthStation * hs;
+    vector<Vehicle*> vehiclesWithPath;
+    ns->print();
+    cout << "teste\n";
+    for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
+        vector<Vertex<MapPoint> * > path = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[i], hs, ns, 1);
+        cout << "teste2\n";
+        if(path.size() > 0) {
+            cout << "teste3\n";
+            vehiclesPath.push_back(path);
+            vehiclesWithPath.push_back(emeritaHealth.vehicles[i]);
+        }
+
+    }
+    cout << "\nListing Vehicles with path: ";
+    for(unsigned int i = 0; i < vehiclesWithPath.size(); i++) {
+        vehiclesWithPath[i]->print();
     }
 }
 
@@ -160,7 +193,7 @@ void Menu::oneVoneI() {
     HealthStation * hs = emeritaHealth.healthCareLocation[hsID];
     NursingHome * ns = emeritaHealth.nursingHome[nsID];
 
-    vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(v,hs, ns);
+    vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(v,hs, ns, 0);
 
     cout << "\nPath:" << endl;
     for (int i=0; i < result.size(); i++) {
@@ -224,17 +257,12 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
     iss >> n_nodes;
 
     // draw nodes
-    string nodeDefaultColor = "blue";
+    string nodeDefaultColor = "yellow";
     string nodePathColor = "red";
     string label;
     size = 10;
     icon_path[0] = '-';
 
-    //yPercent = 1.0 - ((n.getY() - minY)/graphHeight*0.9 + 0.05); //+5% to have margins
-    //xPercent = (n.getX() - minX)/graphWidth*0.9 + 0.05; //*90% to be within margins
-  scale = 0.1;
-//    gv->addNode(i, (int)(xPercent*windowWidth), (int)(yPercent*windowHeight));
-    //gv->addNode(0, 0.0,0.0);
     for(unsigned int i = 0; i < emeritaHealth.originalGraph->getVertexSet().size(); i++) {
         gv->addNode(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(),
                     emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getX()*scale,
@@ -269,9 +297,9 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
     int edgeId = 0;
 
     for(unsigned int i = 0; i < emeritaHealth.originalGraph->getVertexSet().size(); i++)  {
-        if(emeritaHealth.originalGraph->getVertexSet()[i]->getAdj().size()){
-            cout << "Node " << emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID()<< endl;
-        }
+//        if(emeritaHealth.originalGraph->getVertexSet()[i]->getAdj().size()){
+//            cout << "Node " << emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID()<< endl;
+//        }
 
         for(unsigned int j = 0; j < emeritaHealth.originalGraph->getVertexSet()[i]->getAdj().size(); j++) {
             edgeId++;
@@ -283,12 +311,15 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
 
             gv->setEdgeColor(edgeId, defaultEdgeColor);
             for(unsigned int k = 0; k < path.size(); k++) {
-                if(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID() == path[k]->getInfo().getID()){
-                    if(emeritaHealth.originalGraph->getVertexSet()[i]->getAdj()[j].getNode()->getInfo().getID() == path[k+1]->getInfo().getID()){
+                if(k+1 == path.size()) break;
+                if (emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID() == path[k]->getInfo().getID()) {
+                    if (emeritaHealth.originalGraph->getVertexSet()[i]->getAdj()[j].getNode()->getInfo().getID() ==
+                        path[k + 1]->getInfo().getID()) {
                         gv->setEdgeColor(edgeId, pathEdgeColor);
                         break;
                     }
                 }
+            }
                 gv->setEdgeThickness(edgeId, thickness);
                 if (label[0] != '-')
                     gv->setEdgeLabel(edgeId, label);
@@ -296,34 +327,8 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
                     gv->setEdgeFlow(edgeId, atoi(flow));
                 if (weight[0] != '%')
                     gv->setEdgeWeight(edgeId, atoi(weight));
-        }
-    }
-
-    /*for(int i = 0; i < n_edges ; i++) {
-        std::getline(edges, line);
-
-        sscanf( line.c_str(), "(%u, %u)", &v1, &v2);
-        if(emeritaHealth.checkVertexInGraph(v1) && emeritaHealth.checkVertexInGraph(v2)) {
-            (type)? gv->addEdge(i, v1, v2, EdgeType::DIRECTED): gv->addEdge(i, v1, v2, EdgeType::UNDIRECTED);
-            gv->setEdgeColor(i, defaultEdgeColor);
-            for(unsigned int j = 0; j < path.size(); j++) {
-                if(v1 == path[j]->getInfo().getID()){
-                    if(v2 == path[j+1]->getInfo().getID()){
-                        gv->setEdgeColor(i, pathEdgeColor);
-                        break;
-                    }
-                }
             }
-            gv->setEdgeThickness(i, thickness);
-            if (label[0] != '-')
-                gv->setEdgeLabel(i, label);
-            if (flow[0] != '%')
-                gv->setEdgeFlow(i, atoi(flow));
-            if (weight[0] != '%')
-                gv->setEdgeWeight(i, atoi(weight));
-        }*/
-
-    }
+        }
 
     gv->rearrange();
 }

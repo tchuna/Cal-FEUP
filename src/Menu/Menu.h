@@ -21,6 +21,7 @@ public:
     void showHealthCareLocations();
 
     void showTestMenu();
+    void oneVoneIHARD();
     void oneVoneI();
     void oneVmulI();
     void drawGraphFromFile(std::string name, unsigned int port, vector<Vertex<MapPoint> *> path);

@@ -50,7 +50,7 @@ public:
 
     bool addHealthStation();
 
-    vector<Vertex<MapPoint> * >  oneVehicleOneItineration(Vehicle * vehicle , HealthStation * healthCar,NursingHome * nr);
+    vector<Vertex<MapPoint> * >  oneVehicleOneItineration(Vehicle * vehicle , HealthStation * healthCar,NursingHome * nr, int type);
 
     vector<Vertex<MapPoint> * > oneVehicleMultipleItineration(Vehicle * vehicle, HealthStation * healthCare);
 

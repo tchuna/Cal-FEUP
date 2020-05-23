@@ -251,8 +251,10 @@ vector<MapPoint> GraphWorkout::findPath(MapPoint source, MapPoint dest ,int type
 
 }
 
-vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v , HealthStation * healthCare , NursingHome * nr){ // nr = nursingHme[0]
-
+vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v , HealthStation * healthCare , NursingHome * nr, int type){ // nr = nursingHme[0]
+    //type 0 = both
+    //type 1 = vehicle to nursehome
+    //type 2 = nursehome to healthcare
     MapPoint healthstation = healthCare->getMapPoint();
     MapPoint vehicle = v->getMapPoint();
     MapPoint nursinghome = nr->getMapPoint();
@@ -267,26 +269,38 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
         cout << "there can only be one Health station" << endl;
         exit(1);
     }*/
-
+    //type 0 = both
+    //type 1 = vehicle to nursehome
+    //type 2 = nursehome to healthcare
     pair<Vertex<MapPoint>*, Vertex<MapPoint>*> nodes = originalGraph->getTwoVertexs(vehicle,nursinghome);
     cout<<"floyd2"<<endl;
-    result = originalGraph->getfloydWarshallPath(vehicle, nursinghome);
+    if(type == 0 || type == 1) {
+        result = originalGraph->getfloydWarshallPath(vehicle, nursinghome);
+    }
     cout<<"floyd2 end"<<endl;
-    temp = originalGraph->getfloydWarshallPath(nodes.second->getInfo(), healthstation);
-    cout<<"floyd3 end"<<endl;
-    vector<Vertex<MapPoint> * > error;
-    if(temp.size()==0 || result.size()==0 ){
-        cout << "result: " << result.size();
-        cout << " temp: " << temp.size();
-        cout << "\nPath does not exist";
-        //exit (EXIT_FAILURE);
-        return error;
+    if(type == 0 || type == 2) {
+        temp = originalGraph->getfloydWarshallPath(nodes.second->getInfo(), healthstation);
     }
 
-    result.insert(result.end(), temp.begin() + 1, temp.end());
+    cout<<"floyd3 end"<<endl;
+
+    if(type == 1) return result;
+    if(type == 2) return temp;
+    if(type == 0) {
+        vector<Vertex<MapPoint> * > error;
+        if(temp.size()==0 && result.size()==0){
+            cout << "result: " << result.size();
+            cout << " temp: " << temp.size();
+            cout << "\nPath does not exist";
+            //exit (EXIT_FAILURE);
+            return error;
+        }
+
+        result.insert(result.end(), temp.begin() + 1, temp.end());
+    }
+
     resultPath = result;
     return result;
-
 
 }
 
