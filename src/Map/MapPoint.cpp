@@ -30,6 +30,11 @@ bool MapPoint::operator==(const MapPoint & point) const {
     return idPoint == point.idPoint;
 }
 
+bool MapPoint::operator!=(const MapPoint & point) const {
+    return idPoint != point.idPoint;
+}
+
+
 
 
 

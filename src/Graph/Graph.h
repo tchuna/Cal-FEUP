@@ -134,10 +134,16 @@ public:
 	Edge(Vertex<T> *d, double w);
 	friend class Graph<T>;
 	friend class Vertex<T>;
+    Vertex<T>* getNode();
 };
 
 template <class T>
 Edge<T>::Edge(Vertex<T> *d, double w): dest(d), weight(w){}
+
+template <class T>
+Vertex<T>* Edge<T>::getNode() {
+    return this->dest;
+}
 
 
 
@@ -161,6 +167,7 @@ public:
     int ** W;   //weight
     int ** P;   //path
 
+
 	bool addVertex(const T &in);
 	bool addEdge(const T &sourc, const T &dest, double w);
 	bool removeVertex(const T &in);
@@ -175,6 +182,7 @@ public:
 	Vertex<T>* getVertex(const T &v) const;
 	void resetIndegrees();
 	vector<Vertex<T>*> getSources() const;
+    bool connectivity();
 	int getNumCycles();
 	vector<T> topologicalOrder();
 	vector<T> getPath(const T &origin, const T &dest);
@@ -360,7 +368,29 @@ vector<T> Graph<T>::bfs(Vertex<T> *v) const {
 	}
 	return res;
 }
+template <class T>
+bool Graph<T>::connectivity() {
+    vector<T> vecDfs1 = dfs();
 
+    Graph<T> Gr;
+
+    for (int i = 0; i < getNumVertex(); i++) {
+        for (size_t j = 0; j < vertexSet.at(i)->adj.size(); j++) {
+            Gr.addVertex(vertexSet.at(i)->adj.at(j).getNode()->getInfo());
+            Gr.addVertex(vertexSet.at(i)->getInfo());
+            Gr.addEdge(vertexSet.at(i)->adj.at(j).dest->info,
+                       vertexSet.at(i)->info, vertexSet.at(i)->adj.at(j).weight);
+        }
+    }
+
+    vector<T>  vecDfs2 = Gr.dfs();
+
+    if ((int)  vecDfs1.size() != getNumVertex()
+        || (int)  vecDfs2.size() != getNumVertex()) {
+        return false;
+    } else
+        return true;
+}
 template <class T>
 int Graph<T>::maxNewChildren(Vertex<T> *v, T &inf) const {
 	vector<T> res;

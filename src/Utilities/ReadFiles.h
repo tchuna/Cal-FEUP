@@ -22,7 +22,7 @@ class ReadFiles{
 
 
 public:
-
+    vector<vector<unsigned long long>> loadTags();
 	vector<MapPoint*>  loadMapPoints();
     vector<Vehicle*>  loadVehicles();
     vector<NursingHome*>  loadNursingHome();
