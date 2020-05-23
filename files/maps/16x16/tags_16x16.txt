@@ -1,0 +1,17 @@
+3
+healthcare=urgency
+2
+124
+135
+healthcare=center
+4
+143
+150
+132
+288
+health_facility=nursinghome
+4
+21
+55
+72
+90

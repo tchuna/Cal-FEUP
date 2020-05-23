@@ -407,3 +407,21 @@ bool GraphWorkout::checkVertexInGraph(unsigned long long id){
     }
     return false;
 }
+
+vector<unsigned long long> GraphWorkout::getNursingHomesID(){
+    vector<unsigned long long> result;
+    for(unsigned int i = 0; i < nursingHome.size(); i++) {
+        result.push_back(nursingHome[i]->getMapPoint().getID());
+    }
+    return result;
+}
+
+vector<unsigned long long> GraphWorkout::getHealthStationID(){
+    vector<unsigned long long> result;
+    for(unsigned int i = 0; i < healthCareLocation.size(); i++) {
+        result.push_back(healthCareLocation[i]->getMapPoint().getID());
+    }
+    return result;
+}
+
+

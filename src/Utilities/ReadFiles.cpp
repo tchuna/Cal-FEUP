@@ -1,8 +1,8 @@
 #include "ReadFiles.h"
 #include <algorithm>
-#define CONECTPOINTS_FILE  "../files/maps/Ermesinde/edges.txt"
-#define MAPOINTS_FILE  "../files/maps/Ermesinde/nodes.txt"
-#define TAG_FILE  "../files/maps/Ermesinde/tags_ermesinde.txt"
+#define CONECTPOINTS_FILE  "../files/maps/16x16/edges.txt"
+#define MAPOINTS_FILE  "../files/maps/16x16/nodes.txt"
+#define TAG_FILE  "../files/maps/16x16/tags_16x16.txt"
 #define HEALTHSTATION_FILE  "../files/HealthStation/healthStation.txt"
 #define VEHICLES_FILE  "../files/Vehicles/vehicles.txt"
 #define NURSINGHOME_FILE  "../files/NursingHome/nursingHome.txt"

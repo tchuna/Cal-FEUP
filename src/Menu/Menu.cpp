@@ -260,8 +260,8 @@ void Menu::oneVmulI() {
 }
 
 void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<MapPoint> *> path){
-    std::ifstream nodes("../files/maps/Ermesinde/nodes.txt");
-    std::ifstream edges("../files/maps/Ermesinde/edges.txt");
+    std::ifstream nodes("../files/maps/16x16/nodes.txt");
+    std::ifstream edges("../files/maps/16x16/edges.txt");
     std::ifstream window("../files/maps/window.txt");
 
     std::string line, background_path;
@@ -286,21 +286,39 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
     // draw nodes
     string nodeDefaultColor = "yellow";
     string nodePathColor = "red";
+    string nursingColor = "blue";
+    string healthColor = "green";
     string label;
     size = 10;
     icon_path[0] = '-';
-
     for(unsigned int i = 0; i < emeritaHealth.originalGraph->getVertexSet().size(); i++) {
         gv->addNode(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(),
-                    emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getX()*scale,
-                    emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getY()*scale);
+                    emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getX(),
+                    emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getY());
         gv->setVertexColor(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(), nodeDefaultColor);
-        for(unsigned int j = 0; j < path.size(); j++) {
-            if(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID() == path[j]->getInfo().getID()) {
-                gv->setVertexColor(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(), nodePathColor);
+
+        for(unsigned int k = 0; k < emeritaHealth.getNursingHomesID().size(); k++) {
+                if(emeritaHealth.getNursingHomesID()[k] == emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID())
+                    gv->setVertexColor(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(), nursingColor);
                 break;
-            }
+
         }
+        for(unsigned int k = 0; k < emeritaHealth.getHealthStationID().size(); k++) {
+            if(emeritaHealth.getNursingHomesID()[k] == emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID())
+                gv->setVertexColor(emeritaHealth.originalGraph->getVertexSet()[k]->getInfo().getID(), healthColor);
+                break;
+
+        }
+
+
+//        for(unsigned int j = 0; j < path.size(); j++) {
+//
+//            if(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID() == path[j]->getInfo().getID()) {
+//                gv->setVertexColor(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(), nodePathColor);
+//
+//                break;
+//            }
+//        }
         gv->setVertexLabel(i, "Node " + to_string(i));
         if (icon_path[0] != '-')
             gv->setVertexIcon(i, std::string(icon_path));

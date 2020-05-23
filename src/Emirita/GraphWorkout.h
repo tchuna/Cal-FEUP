@@ -60,6 +60,10 @@ public:
 
     bool checkVertexInGraph(unsigned long long id);
 
+    vector<unsigned long long> getNursingHomesID();
+
+    vector<unsigned long long> getHealthStationID();
+
 };
 
 
