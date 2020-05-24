@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <chrono>
 #include "graphviewer.h"
 
 void Menu::start() {
@@ -227,18 +228,17 @@ void Menu::oneVoneI() {
     vector<Vehicle *>  vehiclesWithPath;
     vector<HealthStation *>  healthStationWithPath;
 
+    auto start = chrono::steady_clock::now();
+
     for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
         vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[i], hs, ns, 1);
         if(result.size() > 0)
             vehiclesWithPath.push_back(emeritaHealth.vehicles[i]);
     }
+    auto end = chrono::steady_clock::now();
 
-    /*for(unsigned int i = 0; i < vehiclesWithPath.size(); i++) {
-        if(vehiclesWithPath[i]->getVehicleType() != show) {
-            vehiclesWithPath.erase(vehiclesWithPath.begin() + i);
-            i--;
-        }
-    }*/
+    auto diff = end-start;
+
     if(vehiclesWithPath.size() == 0){
         cout << "\nNo Vehicles Available";
         exit(-1);
@@ -251,14 +251,15 @@ void Menu::oneVoneI() {
     cin >> vID;
 
     int show = vehiclesWithPath[vID]->getVehicleType();
-
+    start = chrono::steady_clock::now();
     for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
         vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(v, emeritaHealth.healthCareLocation[i], ns, 2);
         if(result.size() > 0)
             if(emeritaHealth.healthCareLocation[i]->getType() == show)
                 healthStationWithPath.push_back(emeritaHealth.healthCareLocation[i]);
     }
-
+    end = chrono::steady_clock::now();
+    diff+=(end-start);
     if(healthStationWithPath.size() == 0){
         cout << "\nNo HealthCare Locations Available";
         exit(-1);
@@ -270,7 +271,10 @@ void Menu::oneVoneI() {
     int hsID;
     cin >> hsID;
 
+    start = chrono::steady_clock::now();
     vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(vehiclesWithPath[vID],healthStationWithPath[hsID], ns, 0);
+    end = chrono::steady_clock::now();
+    diff+=(end-start);
     vector<vector<Vertex<MapPoint>*>> path;
     path.push_back(result);
 
@@ -279,12 +283,15 @@ void Menu::oneVoneI() {
         result[i]->getInfo().print();
     }
 
+    cout<< "Time: "<< chrono::duration <double, milli> (diff).count() << " ms" << endl;
+
     drawGraphFromFile("teste", 1234, path);
 }
 
 void Menu::oneVmulI() {
     vector<Vehicle *> normalvehicles;
     vector<HealthStation *> healthCenter;
+
 
     for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
         if(emeritaHealth.vehicles[i]->getVehicleType() == 0)
@@ -313,7 +320,10 @@ void Menu::oneVmulI() {
     Vehicle * v = emeritaHealth.vehicles[vID];
     HealthStation * hs = emeritaHealth.healthCareLocation[hsID];
 
+    auto start = chrono::steady_clock::now();
     vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleMultipleItineration(v);
+    auto end = chrono::steady_clock::now();
+
     vector<vector<Vertex<MapPoint>*>> path;
     path.push_back(result);
 
@@ -323,6 +333,9 @@ void Menu::oneVmulI() {
     }
     unsigned int port = 4321;
     std:string test = "test";
+
+    cout<< "Time: "<< chrono::duration <double, milli> (end-start).count() << " ms" << endl;
+
     drawGraphFromFile(test, port, path);
 }
 
@@ -331,7 +344,11 @@ void Menu::mulVmulI() {
     showVehicles(0, emeritaHealth.vehicles);
     showNursingHomes();
     showHealthCareLocations(0, emeritaHealth.healthCareLocation);
+    auto start = chrono::steady_clock::now();
     vector<vector<Vertex<MapPoint> *>> result = emeritaHealth.multipleVehicleMultipleItineration();
+    auto end = chrono::steady_clock::now();
+    cout<< "Time: "<< chrono::duration <double, milli> (end-start).count() << " ms" << endl;
+
     drawGraphFromFile("mulVmulI", 5555, result);
 }
 
@@ -450,12 +467,10 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<vector<V
             gv->setEdgeThickness(edgeId, thickness);
             int auxColors = 0;
             for(unsigned int z = 0; z < path.size(); z++, auxColors++){
-                cout << "\nVehicle: " << z << endl;
                 if(auxColors == colors.size())
                     auxColors = 0;
                 pathEdgeColor = colors[auxColors];
                 for(unsigned int k = 0; k < path[z].size(); k++) {
-                    cout << "\nID: " << path[z][k]->getInfo().getID();
                     if(k+1 == path[z].size()) break;
                     if (emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID() == path[z][k]->getInfo().getID()) {
                         if (emeritaHealth.originalGraph->getVertexSet()[i]->getAdj()[j].getNode()->getInfo().getID() ==

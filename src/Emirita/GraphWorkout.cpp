@@ -1,6 +1,3 @@
-//
-// Created by elgner on 12/05/20.
-//
 
 #include "GraphWorkout.h"
 #include "../Utilities/ReadFiles.h"
@@ -38,7 +35,6 @@ Graph<MapPoint> *  GraphWorkout::constructGraph(){
     for(unsigned int i =0; i<points.size();i++){
         MapPoint node=MapPoint(points[i]->getID(),points[i]->getX(),points[i]->getY());
         originalGraph->addVertex(node);
-        //originalGraph->getVertex(node)->getInfo().print();
     }
 
     for(unsigned int i =0; i<connectP.size();i++){
@@ -80,7 +76,6 @@ Graph<MapPoint> *  GraphWorkout::constructGraph(){
 bool  GraphWorkout::addData(){
     ReadFiles file;
     data=file.loadTags();
-    //cout<<data[NURSINGHOME].size()<<endl;
 
 
 }
@@ -99,8 +94,7 @@ bool  GraphWorkout::addVehicles(){
 }
 
 bool  GraphWorkout::addNursingHome(){
-    //ReadFiles file;
-    //nursingHome=file.loadNursingHome();
+
 
     srand (time(NULL));
 
@@ -124,8 +118,7 @@ bool  GraphWorkout::addNursingHome(){
 
 
 bool  GraphWorkout::addHealthStation(){
-    //ReadFiles file;
-    //healthCareLocation=file.loadHealthStation();
+
 
     srand (time(NULL));
 
@@ -339,14 +332,14 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration(Vehicle
 
         if (nursingHome.size() == 0)
             break;
-        distBetHealthLocation(current->posAtVec, true);//recalculates the distances and sorts again
+        distBetHealthLocation(current->posAtVec, true);
         current = next;
         next = (*originalGraph)(nursingHome[0]->posAtVec);
-        temp = originalGraph->getfloydWarshallPath(current->getInfo(), next->getInfo());//shortest from nursingHome to nursingHome
-        for (size_t i = 0; i < nursingHome.size(); i++) {//iterate the vertexes in the new path and check for nursingHome passed
+        temp = originalGraph->getfloydWarshallPath(current->getInfo(), next->getInfo());
+        for (size_t i = 0; i < nursingHome.size(); i++) {
             if (temp.size() > 0
                 && find(temp.begin(), temp.end(), (*originalGraph)(nursingHome[i]->posAtVec)) != temp.end()
-                && v->getVehicleCapacity() >= nursingHome[i]->getElderlyNumber()) {//if the nursingHome is in the new path
+                && v->getVehicleCapacity() >= nursingHome[i]->getElderlyNumber()) {
                 v->addPass(-nursingHome[i]->getElderlyNumber());
                 nursingHome[i]->getMapPoint().print();
                 nursingHome.erase(nursingHome.begin()+i);

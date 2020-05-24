@@ -1,6 +1,3 @@
-//
-// Created by elgner on 11/05/20.
-//
 
 #ifndef NURSINGHOME_H
 #define NURSINGHOME_H

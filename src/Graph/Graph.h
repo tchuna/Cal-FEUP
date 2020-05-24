@@ -95,7 +95,7 @@ Vertex<T>::Vertex(T in): info(in), visited(false), processing(false), indegree(0
 template <class T>
 void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
 	Edge<T> edgeD(dest,w);
-    edgeD.dest->in.push_back(this);//Adds this vertex to the vector of vertexes going into the new one
+    edgeD.dest->in.push_back(this);
     adj.push_back(edgeD);
 }
 
@@ -222,7 +222,6 @@ inline bool Graph<T>::addVertexPointer(Vertex<T> * in) {
 
 template<class T>
 Graph<T> * Graph<T>::preProcessGraph() {
-    cout << "Preprocessing...";
     Graph<T> * resultGraph = new Graph<T>;
     for (auto v : vertexSet)
         v->hidden = false;
@@ -448,12 +447,12 @@ Vertex<T>* Graph<T>::getVertex(const T &v) const {
 
 template<class T>
 void Graph<T>::resetIndegrees() {
-	
+
 	for(unsigned int i = 0; i < vertexSet.size(); i++) vertexSet[i]->indegree = 0;
 
-	
+
 	for(unsigned int i = 0; i < vertexSet.size(); i++) {
-		
+
 		for(unsigned int j = 0; j < vertexSet[i]->adj.size(); j++) {
 			vertexSet[i]->adj[j].dest->indegree++;
 		}

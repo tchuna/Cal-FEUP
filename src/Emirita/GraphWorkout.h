@@ -1,6 +1,3 @@
-//
-// Created by elgner on 12/05/20.
-//
 
 #ifndef GRAPHWORKOUT_H
 #define GRAPHWORKOUT_H

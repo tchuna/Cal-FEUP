@@ -1,6 +1,3 @@
-//
-// Created by elgner on 11/05/20.
-//
 
 #ifndef VEHICLE_H
 #define VEHICLE_H

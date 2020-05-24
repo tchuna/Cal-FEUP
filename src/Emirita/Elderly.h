@@ -1,6 +1,3 @@
-//
-// Created by elgner on 11/05/20.
-//
 
 #ifndef ELDERLY_H
 #define ELDERLY_H

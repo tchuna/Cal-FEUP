@@ -43,10 +43,10 @@ RM = /snap/clion/112/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gg/CLionProjects/Cal-FEUP33
+CMAKE_SOURCE_DIR = /home/elgner/Desktop/cal
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug
+CMAKE_BINARY_DIR = /home/elgner/Desktop/cal/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/cal.dir/depend.make
@@ -59,159 +59,159 @@ include CMakeFiles/cal.dir/flags.make
 
 CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.o: ../src/Emirita/Elderly.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/Elderly.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.o -c /home/elgner/Desktop/cal/src/Emirita/Elderly.cpp
 
 CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/Elderly.cpp > CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/Emirita/Elderly.cpp > CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.i
 
 CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/Elderly.cpp -o CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/Emirita/Elderly.cpp -o CMakeFiles/cal.dir/src/Emirita/Elderly.cpp.s
 
 CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.o: ../src/Emirita/GraphWorkout.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/GraphWorkout.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.o -c /home/elgner/Desktop/cal/src/Emirita/GraphWorkout.cpp
 
 CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/GraphWorkout.cpp > CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/Emirita/GraphWorkout.cpp > CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.i
 
 CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/GraphWorkout.cpp -o CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/Emirita/GraphWorkout.cpp -o CMakeFiles/cal.dir/src/Emirita/GraphWorkout.cpp.s
 
 CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.o: ../src/Emirita/HealthStation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/HealthStation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.o -c /home/elgner/Desktop/cal/src/Emirita/HealthStation.cpp
 
 CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/HealthStation.cpp > CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/Emirita/HealthStation.cpp > CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.i
 
 CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/HealthStation.cpp -o CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/Emirita/HealthStation.cpp -o CMakeFiles/cal.dir/src/Emirita/HealthStation.cpp.s
 
 CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.o: ../src/Emirita/NursingHome.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/NursingHome.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.o -c /home/elgner/Desktop/cal/src/Emirita/NursingHome.cpp
 
 CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/NursingHome.cpp > CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/Emirita/NursingHome.cpp > CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.i
 
 CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/NursingHome.cpp -o CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/Emirita/NursingHome.cpp -o CMakeFiles/cal.dir/src/Emirita/NursingHome.cpp.s
 
 CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.o: ../src/Emirita/Vehicle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/Vehicle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.o -c /home/elgner/Desktop/cal/src/Emirita/Vehicle.cpp
 
 CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/Vehicle.cpp > CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/Emirita/Vehicle.cpp > CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.i
 
 CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/Emirita/Vehicle.cpp -o CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/Emirita/Vehicle.cpp -o CMakeFiles/cal.dir/src/Emirita/Vehicle.cpp.s
 
 CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.o: ../src/GraphViewer/connection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer/connection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.o -c /home/elgner/Desktop/cal/src/GraphViewer/connection.cpp
 
 CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer/connection.cpp > CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/GraphViewer/connection.cpp > CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.i
 
 CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer/connection.cpp -o CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/GraphViewer/connection.cpp -o CMakeFiles/cal.dir/src/GraphViewer/connection.cpp.s
 
 CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.o: ../src/GraphViewer/graphviewer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer/graphviewer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.o -c /home/elgner/Desktop/cal/src/GraphViewer/graphviewer.cpp
 
 CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer/graphviewer.cpp > CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/GraphViewer/graphviewer.cpp > CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.i
 
 CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer/graphviewer.cpp -o CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/GraphViewer/graphviewer.cpp -o CMakeFiles/cal.dir/src/GraphViewer/graphviewer.cpp.s
 
 CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.o: ../src/Map/ConnectPoints.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/Map/ConnectPoints.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.o -c /home/elgner/Desktop/cal/src/Map/ConnectPoints.cpp
 
 CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/Map/ConnectPoints.cpp > CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/Map/ConnectPoints.cpp > CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.i
 
 CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/Map/ConnectPoints.cpp -o CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/Map/ConnectPoints.cpp -o CMakeFiles/cal.dir/src/Map/ConnectPoints.cpp.s
 
 CMakeFiles/cal.dir/src/Map/MapPoint.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/Map/MapPoint.cpp.o: ../src/Map/MapPoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/cal.dir/src/Map/MapPoint.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Map/MapPoint.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/Map/MapPoint.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/cal.dir/src/Map/MapPoint.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Map/MapPoint.cpp.o -c /home/elgner/Desktop/cal/src/Map/MapPoint.cpp
 
 CMakeFiles/cal.dir/src/Map/MapPoint.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/Map/MapPoint.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/Map/MapPoint.cpp > CMakeFiles/cal.dir/src/Map/MapPoint.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/Map/MapPoint.cpp > CMakeFiles/cal.dir/src/Map/MapPoint.cpp.i
 
 CMakeFiles/cal.dir/src/Map/MapPoint.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/Map/MapPoint.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/Map/MapPoint.cpp -o CMakeFiles/cal.dir/src/Map/MapPoint.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/Map/MapPoint.cpp -o CMakeFiles/cal.dir/src/Map/MapPoint.cpp.s
 
 CMakeFiles/cal.dir/src/Menu/Menu.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/Menu/Menu.cpp.o: ../src/Menu/Menu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/cal.dir/src/Menu/Menu.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Menu/Menu.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/Menu/Menu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/cal.dir/src/Menu/Menu.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Menu/Menu.cpp.o -c /home/elgner/Desktop/cal/src/Menu/Menu.cpp
 
 CMakeFiles/cal.dir/src/Menu/Menu.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/Menu/Menu.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/Menu/Menu.cpp > CMakeFiles/cal.dir/src/Menu/Menu.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/Menu/Menu.cpp > CMakeFiles/cal.dir/src/Menu/Menu.cpp.i
 
 CMakeFiles/cal.dir/src/Menu/Menu.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/Menu/Menu.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/Menu/Menu.cpp -o CMakeFiles/cal.dir/src/Menu/Menu.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/Menu/Menu.cpp -o CMakeFiles/cal.dir/src/Menu/Menu.cpp.s
 
 CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.o: ../src/Utilities/ReadFiles.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/Utilities/ReadFiles.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.o -c /home/elgner/Desktop/cal/src/Utilities/ReadFiles.cpp
 
 CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/Utilities/ReadFiles.cpp > CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/Utilities/ReadFiles.cpp > CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.i
 
 CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/Utilities/ReadFiles.cpp -o CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/Utilities/ReadFiles.cpp -o CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.s
 
 CMakeFiles/cal.dir/src/main.cpp.o: CMakeFiles/cal.dir/flags.make
 CMakeFiles/cal.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/cal.dir/src/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/main.cpp.o -c /home/gg/CLionProjects/Cal-FEUP33/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/cal.dir/src/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cal.dir/src/main.cpp.o -c /home/elgner/Desktop/cal/src/main.cpp
 
 CMakeFiles/cal.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cal.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/CLionProjects/Cal-FEUP33/src/main.cpp > CMakeFiles/cal.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/elgner/Desktop/cal/src/main.cpp > CMakeFiles/cal.dir/src/main.cpp.i
 
 CMakeFiles/cal.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cal.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/CLionProjects/Cal-FEUP33/src/main.cpp -o CMakeFiles/cal.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/elgner/Desktop/cal/src/main.cpp -o CMakeFiles/cal.dir/src/main.cpp.s
 
 # Object files for target cal
 cal_OBJECTS = \
@@ -245,7 +245,7 @@ cal: CMakeFiles/cal.dir/src/Utilities/ReadFiles.cpp.o
 cal: CMakeFiles/cal.dir/src/main.cpp.o
 cal: CMakeFiles/cal.dir/build.make
 cal: CMakeFiles/cal.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable cal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable cal"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cal.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -258,6 +258,6 @@ CMakeFiles/cal.dir/clean:
 .PHONY : CMakeFiles/cal.dir/clean
 
 CMakeFiles/cal.dir/depend:
-	cd /home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gg/CLionProjects/Cal-FEUP33 /home/gg/CLionProjects/Cal-FEUP33 /home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug /home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug /home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/CMakeFiles/cal.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/elgner/Desktop/cal/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/elgner/Desktop/cal /home/elgner/Desktop/cal /home/elgner/Desktop/cal/cmake-build-debug /home/elgner/Desktop/cal/cmake-build-debug /home/elgner/Desktop/cal/cmake-build-debug/CMakeFiles/cal.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cal.dir/depend
 
