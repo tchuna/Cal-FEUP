@@ -54,7 +54,7 @@ public:
 
     vector<Vertex<MapPoint> * > oneVehicleMultipleItineration(Vehicle * vehicle);
 
-    vector<Vertex<MapPoint>*> multipleVehicleMultipleItineration();
+    vector<vector<Vertex<MapPoint>*>> multipleVehicleMultipleItineration();
 
     void distBetHealthLocation(int vertexPos, bool isSort);
 

@@ -321,7 +321,7 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration(Vehicle
 
     Vertex<MapPoint> * garage = originalGraph->getVertex(v->getMapPoint());
     int currentVertex = garage->posAtVec;
-
+    vector<Vertex<MapPoint> * > error;
     distBetHealthLocation(currentVertex, true);
 
     Vertex<MapPoint> * current = (*originalGraph)(currentVertex), * next = (*originalGraph)(nursingHome[0]->posAtVec);
@@ -350,18 +350,26 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration(Vehicle
             }
 
         }
-        result.insert(result.end(), temp.begin() + 1, temp.end());
+        if(temp.size()==0 || result.size()==0){
+            result = error;
+        }
+        else
+            result.insert(result.end(), temp.begin() + 1, temp.end());
     }
     HealthStation* nearStation =  nearHealthStation(next->getInfo(), 0);
     temp = originalGraph->getfloydWarshallPath(next->getInfo(), nearStation->getMapPoint());
+
+    if(temp.size()==0 || result.size()==0){
+        return error;
+    }
     result.insert(result.end(), temp.begin() + 1, temp.end());
 
     return result;
 }
 
 
-vector<Vertex<MapPoint>*> GraphWorkout:: multipleVehicleMultipleItineration() {
-    vector<Vertex<MapPoint>*> result;
+vector<vector<Vertex<MapPoint>*>> GraphWorkout:: multipleVehicleMultipleItineration() {
+    vector<vector<Vertex<MapPoint>*>> result;
     vector<Vertex<MapPoint>*> temp;
 
     for(unsigned int i = 0; i < vehicles.size(); i++) {
@@ -369,7 +377,7 @@ vector<Vertex<MapPoint>*> GraphWorkout:: multipleVehicleMultipleItineration() {
             if(vehicles[i]->getVehicleCapacity() < nursingHome[0]->getElderlyNumber())
                 break;
             temp = oneVehicleMultipleItineration(vehicles[i]);
-            result.insert(result.end(), temp.begin(), temp.end());
+            result.push_back(temp);
         }
     }
 

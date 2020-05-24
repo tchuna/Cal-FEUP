@@ -26,7 +26,7 @@ public:
     void oneVmulI();
     void oneVehicleUrgent();
     void mulVmulI();
-    void drawGraphFromFile(std::string name, unsigned int port, vector<Vertex<MapPoint> *> path);
+    void drawGraphFromFile(std::string name, unsigned int port, vector<vector<Vertex<MapPoint>*>> path);
 
 };
 
