@@ -18,7 +18,7 @@ public:
     void showMapEdges();
     void showVehicles(int show, vector<Vehicle *> vehicles);
     void showNursingHomes();
-    void showHealthCareLocations();
+    void showHealthCareLocations(int show, vector<HealthStation *> hs);
 
     void showTestMenu();
     void oneVoneIHARD();
