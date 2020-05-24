@@ -32,7 +32,7 @@ public:
 
     vector<HealthStation *> healthCareLocation;
 
-    vector<Vertex<MapPoint> * > resultPath;
+    vector<unsigned long long> nursingHomesIDs;
 
 
     void loadGraph();
@@ -52,9 +52,9 @@ public:
 
     vector<Vertex<MapPoint> * >  oneVehicleOneItineration(Vehicle * vehicle , HealthStation * healthCar,NursingHome * nr, int type);
 
-    vector<Vertex<MapPoint> * > oneVehicleMultipleItineration(Vehicle * vehicle, HealthStation * healthCare);
+    vector<Vertex<MapPoint> * > oneVehicleMultipleItineration(Vehicle * vehicle);
 
-    vector<vector<Vertex<MapPoint>*>> multipleVehicleMultipleItineration(HealthStation * hs, int vehiclesCapacity);
+    vector<vector<Vertex<MapPoint>*>> multipleVehicleMultipleItineration();
 
     void distBetHealthLocation(int vertexPos, bool isSort);
 
