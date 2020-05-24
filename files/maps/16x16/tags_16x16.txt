@@ -10,8 +10,9 @@ healthcare=center
 132
 288
 health_facility=nursinghome
-4
+5
 21
 55
 72
 90
+3

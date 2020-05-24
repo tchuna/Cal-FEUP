@@ -106,7 +106,7 @@ bool  GraphWorkout::addNursingHome(){
 
     for(int i=0;i<data[NURSINGHOME].size();i++){
         int type;
-        type = rand() % 5;
+        type = 1;
         for(int j=0;j<originalGraph->getVertexSet().size();j++){
             if(data[NURSINGHOME][i]==originalGraph->getVertexSet()[j]->getInfo().getID()){
                 NursingHome* aux = new NursingHome(originalGraph->getVertexSet()[j]->getInfo(),type);
@@ -162,6 +162,31 @@ bool  GraphWorkout::addHealthStation(){
 
 }
 
+Vehicle* GraphWorkout::nearVehicle(MapPoint node,int type) {
+
+    int distMinim = INT_MAX;
+    int nodePosition = -1;
+
+
+    for (unsigned int i = 0; i < vehicles.size(); i++) {
+        if( vehicles[i]->getVehicleType()==type){
+
+            originalGraph->dijkstraShortestPath(vehicles[i]->getMapPoint());
+
+            int currentDist = originalGraph->getVertex(node)->getDist();
+
+            if (currentDist <= distMinim) {
+                nodePosition = i;
+                distMinim = currentDist;
+            }
+
+        }
+
+    }
+
+    return vehicles[nodePosition];
+
+}
 
 HealthStation* GraphWorkout::nearHealthStation(MapPoint node,int type) {
 
@@ -171,10 +196,8 @@ HealthStation* GraphWorkout::nearHealthStation(MapPoint node,int type) {
 
     for (unsigned int i = 0; i < healthCareLocation.size(); i++) {
         if( healthCareLocation[i]->getType()==type){
-
-            originalGraph->dijkstraShortestPath(healthCareLocation[i]->getMapPoint());
-
-            int currentDist = originalGraph->getVertex(node)->getDist();
+            originalGraph->dijkstraShortestPath(node);
+            int currentDist = originalGraph->getVertex(healthCareLocation[i]->getMapPoint())->getDist();
             if (currentDist <= distMinim) {
                 nodePosition = i;
                 distMinim = currentDist;
@@ -330,7 +353,7 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration( Vehicl
     originalGraph->floydWarshallShortestPath();
     //Vehicle* v=vehicles[0];
     //HealthStation* hs=healthCareLocation[0];
-
+    cout << "Original vehiclecap: " << v->getVehicleCapacity();
 
     pair<Vertex<MapPoint>*, Vertex<MapPoint>*> nodes = originalGraph->getTwoVertexs(v->getMapPoint(), hs->getMapPoint());
     Vertex<MapPoint> * garage = nodes.first, * station = nodes.second;
@@ -341,12 +364,13 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration( Vehicl
     Vertex<MapPoint> * current = (*originalGraph)(currentVertex), * next = (*originalGraph)(nursingHome[0]->posAtVec);
 
     result = originalGraph->getfloydWarshallPath(current->getInfo(), next->getInfo());//shortest from vehicle to nursingHome
-
+    //cout << "size" << nursingHome.size() << " vehiclecap: " << v->getVehicleCapacity() << " leftnext: " << nursingHome[0]->getElderlyNumber();
     while (nursingHome.size() > 0 && v->getVehicleCapacity() >= nursingHome[0]->getElderlyNumber()) {
-        v->addPass(-nursingHome[0]->getElderlyNumber());
+        cout << "size" << nursingHome.size() << " vehiclecap: " << v->getVehicleCapacity() << " leftnext: " << nursingHome[0]->getElderlyNumber();
+        //v->addPass(-nursingHome[0]->getElderlyNumber());
         cout << "Add Nursing  Home : ";
         nursingHome[0]->getMapPoint().print();
-        nursingHome.erase(nursingHome.begin());//erase the first
+        //nursingHome.erase(nursingHome.begin());//erase the first
 
         if (nursingHome.size() == 0)
             break;
@@ -416,10 +440,28 @@ vector<unsigned long long> GraphWorkout::getNursingHomesID(){
     return result;
 }
 
-vector<unsigned long long> GraphWorkout::getHealthStationID(){
+vector<unsigned long long> GraphWorkout::getUrgentHealthID(){
     vector<unsigned long long> result;
     for(unsigned int i = 0; i < healthCareLocation.size(); i++) {
-        result.push_back(healthCareLocation[i]->getMapPoint().getID());
+        if(healthCareLocation[i]->getType() == 1)
+            result.push_back(healthCareLocation[i]->getMapPoint().getID());
+    }
+    return result;
+}
+
+vector<unsigned long long> GraphWorkout::getNormalHealthID(){
+    vector<unsigned long long> result;
+    for(unsigned int i = 0; i < healthCareLocation.size(); i++) {
+        if(healthCareLocation[i]->getType() == 0)
+            result.push_back(healthCareLocation[i]->getMapPoint().getID());
+    }
+    return result;
+}
+
+vector<unsigned long long> GraphWorkout::getVehiclesID(){
+    vector<unsigned long long> result;
+    for(unsigned int i = 0; i < vehicles.size(); i++) {
+        result.push_back(vehicles[i]->getMapPoint().getID());
     }
     return result;
 }

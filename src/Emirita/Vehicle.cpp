@@ -34,6 +34,6 @@ bool Vehicle::operator==(const Vehicle & vehicle) const {
 }
 
 
-Vehicle & Vehicle::addPass(int value) {	this->vehicleType += value; return *this;}
+Vehicle & Vehicle::addPass(int value) {	this->vehicleCapacity += value; return *this;}
 
 
