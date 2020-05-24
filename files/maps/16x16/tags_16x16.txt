@@ -10,9 +10,11 @@ healthcare=center
 132
 288
 health_facility=nursinghome
-5
+7
 21
 55
 72
 90
 3
+226
+279

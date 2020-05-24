@@ -118,6 +118,7 @@ void Menu::showTestMenu() {
         cout << "2 - On vehicle Multiple Iteneration\n";
         cout << "3 - One Vehicle One Iteneration HARD\n";
         cout << "4 - One Vehicle Urgent\n";
+        cout << "5 - Multiple Vehicle Multiple Iteneration\n";
         cout << "0 - Exit\n\n";
 
         cout << "Option: ";
@@ -138,6 +139,9 @@ void Menu::showTestMenu() {
                 break;
             case 4:
                 oneVehicleUrgent();
+                break;
+            case 5:
+                mulVmulI();
                 break;
         }
     }
@@ -271,7 +275,7 @@ void Menu::oneVmulI() {
     Vehicle * v = emeritaHealth.vehicles[vID];
     HealthStation * hs = emeritaHealth.healthCareLocation[hsID];
 
-    vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleMultipleItineration(v, hs);
+    vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleMultipleItineration(v);
 
     cout << "\nPath:" << endl;
     for (int i=0; i < result.size(); i++) {
@@ -280,6 +284,15 @@ void Menu::oneVmulI() {
     unsigned int port = 4321;
     std:string test = "test";
     drawGraphFromFile(test, port, result);
+}
+
+void Menu::mulVmulI() {
+    cout << "\nMultiples Vehicles Multiple Itineration\n";
+    showVehicles();
+    showNursingHomes();
+    showHealthCareLocations();
+    vector<Vertex<MapPoint> *> result = emeritaHealth.multipleVehicleMultipleItineration();
+    drawGraphFromFile("mulVmulI", 5555, result);
 }
 
 void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<MapPoint> *> path){
@@ -339,8 +352,6 @@ void Menu::drawGraphFromFile(std::string name,unsigned int port, vector<Vertex<M
             if(emeritaHealth.getVehiclesID()[k] == emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID())
                 gv->setVertexColor(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID(), vehicleColor);
         }
-
-
 //        for(unsigned int j = 0; j < path.size(); j++) {
 //
 //            if(emeritaHealth.originalGraph->getVertexSet()[i]->getInfo().getID() == path[j]->getInfo().getID()) {
