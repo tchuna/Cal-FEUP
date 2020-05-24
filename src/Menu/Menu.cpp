@@ -59,7 +59,7 @@ void Menu::showBasic() {
                 showMapEdges();
                 break;
             case 3:
-                showVehicles();
+                showVehicles(0, emeritaHealth.vehicles);
                 break;
             case 4:
                 showNursingHomes();
@@ -86,27 +86,51 @@ void Menu::showMapEdges(){ //TODO
     }
 }
 
-void Menu::showVehicles(){
-    for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
-        cout << "Vehicle["<< i << "]: ";
-        emeritaHealth.vehicles[i]->print();
+void Menu::showVehicles(int show, vector<Vehicle *> vehicles){
+    //show = 0 - all
+    //show = 1 - urgent
+    //show = 2 - normal
+    for(unsigned int i = 0; i < vehicles.size(); i++) {
+        if(show == 0){
+            cout << i <<" - Vehicle ID: "<< vehicles[i]->getMapPoint().getID();
+            if(vehicles[i]->getVehicleType() == 1)
+                cout << "   Type: Ambulance   Point: ";
+            else
+                cout << "   Type: Normal   Point: ";
+            vehicles[i]->getMapPoint().print();
+        }
+        else if(show == 1)  {
+            if(vehicles[i]->getVehicleType() == 1)
+                cout << i <<" - Vehicle ID: "<< vehicles[i]->getMapPoint().getID();
+                cout << "   Type: Ambulance   Point: ";
+            vehicles[i]->getMapPoint().print();
+        }
+        else if(show == 2)  {
+            if(vehicles[i]->getVehicleType() == 0)
+                cout << i <<" - Vehicle ID: "<< vehicles[i]->getMapPoint().getID();
+            cout << "   Type: Normal   Point: ";
+            vehicles[i]->getMapPoint().print();
+        }
     }
 }
+
 void Menu::showNursingHomes(){
     for(unsigned int i = 0; i < emeritaHealth.nursingHome.size(); i++) {
-        cout << "NursingHome["<< i << "]: ";
-        cout << emeritaHealth.nursingHome[i]->getMapPoint().getID() << " " <<
-        emeritaHealth.nursingHome[i]->getElderlyNumber() << " " <<
-        emeritaHealth.nursingHome[i]->getMapPoint().getX() << " " <<
-        emeritaHealth.nursingHome[i]->getMapPoint().getY() << endl;
+        cout << i << " - NursingHome ID: " << emeritaHealth.nursingHome[i]->getMapPoint().getID();
+        cout << "     ElderNumber: " << emeritaHealth.nursingHome[i]->getElderlyNumber() << "   ";
+        cout << "   Point: "; emeritaHealth.nursingHome[i]->getMapPoint().print();
+
     }
 }
 void Menu::showHealthCareLocations(){
     for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
-        cout << "HealthCare["<< i << "]: ";
-        cout << emeritaHealth.healthCareLocation[i]->getMapPoint().getID() << " " <<
-             emeritaHealth.healthCareLocation[i]->getMapPoint().getX() << " " <<
-             emeritaHealth.healthCareLocation[i]->getMapPoint().getY() << endl;
+        cout << i << " - HealthCare ID: " << emeritaHealth.healthCareLocation[i]->getMapPoint().getID();
+        if(emeritaHealth.healthCareLocation[i]->getType() == 1)
+            cout << "   Type: Hospital   Point: ";
+        else
+            cout << "   Type: HealthCenter   Point: ";
+        emeritaHealth.healthCareLocation[i]->getMapPoint().print();
+
     }
 }
 
@@ -114,11 +138,10 @@ void Menu::showTestMenu() {
     int nextMenu = -1;
     while(nextMenu != 0){
         cout << "\nTest Menu\n";
-        cout << "1 - One Vehicle One Iteneration\n";
-        cout << "2 - On vehicle Multiple Iteneration\n";
-        cout << "3 - One Vehicle One Iteneration HARD\n";
-        cout << "4 - One Vehicle Urgent\n";
-        cout << "5 - Multiple Vehicle Multiple Iteneration\n";
+        cout << "1 - One Vehicle Normal\n";
+        cout << "2 - One Vehicle Urgent\n";
+        cout << "3 - On vehicle Multiple Iteneration\n";
+        cout << "4 - Multiple Vehicle Multiple Iteneration\n";
         cout << "0 - Exit\n\n";
 
         cout << "Option: ";
@@ -131,43 +154,17 @@ void Menu::showTestMenu() {
                 oneVoneI();
                 break;
             case 2:
-                oneVmulI();
+                oneVehicleUrgent();
                 //TODO
                 break;
             case 3:
-                oneVoneIHARD();
+                oneVmulI();
                 break;
             case 4:
-                oneVehicleUrgent();
-                break;
-            case 5:
                 mulVmulI();
                 break;
         }
     }
-}
-
-void Menu::oneVoneIHARD() {
-    cout << "\n\nOne Vehicle One iteneration HARD\n\n";
-    cout << "\n NursingHomes\n";
-    showNursingHomes();
-    cout << "\nSelect NursingHomes by ID: ";
-    int nhID;
-    cin >> nhID;
-    cin.clear();
-
-    NursingHome * nh = emeritaHealth.nursingHome[nhID];
-
-    Vehicle * v = emeritaHealth.nearVehicle(nh->getMapPoint(), 1);
-
-    HealthStation * hs = emeritaHealth.nearHealthStation(nh->getMapPoint(), 1);
-
-    vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(v,hs, nh, 0);
-    vector<vector<Vertex<MapPoint>*>> path;
-    path.push_back(result);
-
-    drawGraphFromFile("Emergency", 4444, path);
-
 }
 
 void Menu::oneVehicleUrgent() {
@@ -193,28 +190,48 @@ void Menu::oneVehicleUrgent() {
 
 void Menu::oneVoneI() {
 
+    cout << "\n NursingHomes\n";
+    showNursingHomes();
+    cout << "\nSelect NursingHomes by ID: ";
+    int nsID;
+    cin >> nsID;
+    cin.clear();
+    cout << "BOOM MENU";
+    NursingHome * ns = emeritaHealth.nursingHome[nsID];
+    HealthStation * hs = emeritaHealth.healthCareLocation[0];
+    vector<Vehicle *>  vehiclesWithPath;
+
+    vector<HealthStation *>  healthStationWithPath;
+
+    /*for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
+        vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[i], hs, ns, 1);
+        if(result.size() > 0)
+            vehiclesWithPath.push_back(emeritaHealth.vehicles[i]);
+    }
 
     cout << "\n\nOne Vehicle One iteneration\n\n";
-    showVehicles();
+    showVehicles(0, vehiclesWithPath);
     cout << "\nSelect vehicle by ID: ";
     int vID;
-    cin >> vID;
+    cin >> vID;*/
+    /*cout << "BOOM MENU";
+    for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
+        vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[i], emeritaHealth.healthCareLocation[i], ns, 2);
+        if(result.size() > 0)
+            healthStationWithPath.push_back(emeritaHealth.healthCareLocation[i]);
+    }*/
+
+
 
     cout << "\n HealhStationsn\n";
     showHealthCareLocations();
     cout << "\nSelect vehicle by ID: ";
     int hsID;
     cin >> hsID;
-
-    cout << "\n NursingHomes\n";
-    showNursingHomes();
-    cout << "\nSelect NursingHomes by ID: ";
-    int nsID;
-    cin >> nsID;
-
+/*
     Vehicle * v = emeritaHealth.vehicles[vID];
-    HealthStation * hs = emeritaHealth.healthCareLocation[hsID];
-    NursingHome * ns = emeritaHealth.nursingHome[nsID];
+    //HealthStation * hs = emeritaHealth.healthCareLocation[hsID];
+    //NursingHome * ns = emeritaHealth.nursingHome[nsID];
 
     vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(v,hs, ns, 0);
     vector<vector<Vertex<MapPoint>*>> path;
@@ -225,13 +242,13 @@ void Menu::oneVoneI() {
         result[i]->getInfo().print();
     }
 
-    drawGraphFromFile("teste", 1234, path);
+    drawGraphFromFile("teste", 1234, path);*/
 }
 
 void Menu::oneVmulI() {
 
     cout << "\n\nOne Vehicle One iteneration\n\n";
-    showVehicles();
+    showVehicles(0, emeritaHealth.vehicles);
     cout << "\nSelect vehicle by ID: ";
     int vID;
     cin >> vID;
@@ -261,7 +278,7 @@ void Menu::oneVmulI() {
 
 void Menu::mulVmulI() {
     cout << "\nMultiples Vehicles Multiple Itineration\n";
-    showVehicles();
+    showVehicles(0, emeritaHealth.vehicles);
     showNursingHomes();
     showHealthCareLocations();
     vector<vector<Vertex<MapPoint> *>> result = emeritaHealth.multipleVehicleMultipleItineration();

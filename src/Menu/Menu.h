@@ -16,7 +16,7 @@ public:
     void showBasic();
     void showMapPoints();
     void showMapEdges();
-    void showVehicles();
+    void showVehicles(int show, vector<Vehicle *> vehicles);
     void showNursingHomes();
     void showHealthCareLocations();
 

@@ -296,13 +296,18 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
     if(type == 0 || type == 1) {
         result = originalGraph->getfloydWarshallPath(vehicle, nursinghome);
     }
-
+    cout << "BOOMBEFORE";
     if(type == 0 || type == 2) {
+        cout << "BOOM";
         temp = originalGraph->getfloydWarshallPath(nursinghome, healthstation);
+        cout << "BOOMAFTER";
     }
 
     if(type == 1) return result;
-    if(type == 2) return temp;
+    if(type == 2){
+        if(temp.size() != 0)
+            return temp;
+    }
     if(type == 0) {
         vector<Vertex<MapPoint> * > error;
         if(temp.size()==0 || result.size()==0){
