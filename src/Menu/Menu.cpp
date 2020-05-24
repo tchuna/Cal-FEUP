@@ -196,15 +196,16 @@ void Menu::oneVoneI() {
     int nsID;
     cin >> nsID;
     cin.clear();
-    cout << "BOOM MENU";
+
     NursingHome * ns = emeritaHealth.nursingHome[nsID];
     HealthStation * hs = emeritaHealth.healthCareLocation[0];
+    Vehicle * v = emeritaHealth.vehicles[0];
     vector<Vehicle *>  vehiclesWithPath;
 
     vector<HealthStation *>  healthStationWithPath;
 
     for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
-        vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[i], hs, ns, 1);
+        vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(v, hs, ns, 1);
         if(result.size() > 0)
             vehiclesWithPath.push_back(emeritaHealth.vehicles[i]);
     }
@@ -215,12 +216,11 @@ void Menu::oneVoneI() {
     int vID;
     cin >> vID;
 
-    /*cout << "BOOM MENU";
     for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
-        vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[i], emeritaHealth.healthCareLocation[i], ns, 2);
+        vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(v, emeritaHealth.healthCareLocation[i], ns, 2);
         if(result.size() > 0)
             healthStationWithPath.push_back(emeritaHealth.healthCareLocation[i]);
-    }*/
+    }
 
 
 
