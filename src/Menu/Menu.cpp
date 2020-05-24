@@ -203,7 +203,7 @@ void Menu::oneVoneI() {
 
     vector<HealthStation *>  healthStationWithPath;
 
-    /*for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
+    for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
         vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[i], hs, ns, 1);
         if(result.size() > 0)
             vehiclesWithPath.push_back(emeritaHealth.vehicles[i]);
@@ -213,7 +213,8 @@ void Menu::oneVoneI() {
     showVehicles(0, vehiclesWithPath);
     cout << "\nSelect vehicle by ID: ";
     int vID;
-    cin >> vID;*/
+    cin >> vID;
+
     /*cout << "BOOM MENU";
     for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
         vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[i], emeritaHealth.healthCareLocation[i], ns, 2);
