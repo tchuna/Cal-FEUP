@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="example"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cal">
+				<Option output="/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/cal" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer"/>
+					<Add directory="/home/gg/CLionProjects/Cal-FEUP33/files"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 cal"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cal/fast">
+				<Option output="/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/cal" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer"/>
+					<Add directory="/home/gg/CLionProjects/Cal-FEUP33/files"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 cal/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/gg/CLionProjects/Cal-FEUP33/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Emirita/Elderly.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Emirita/Elderly.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Emirita/GraphWorkout.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Emirita/GraphWorkout.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Emirita/HealthStation.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Emirita/HealthStation.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Emirita/NursingHome.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Emirita/NursingHome.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Emirita/Vehicle.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Emirita/Vehicle.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer/connection.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer/connection.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer/graphviewer.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/GraphViewer/graphviewer.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Map/ConnectPoints.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Map/ConnectPoints.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Map/MapPoint.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Map/MapPoint.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Menu/Menu.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Menu/Menu.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Utilities/ReadFiles.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/Utilities/ReadFiles.h">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/src/main.cpp">
+			<Option target="cal"/>
+		</Unit>
+		<Unit filename="/home/gg/CLionProjects/Cal-FEUP33/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

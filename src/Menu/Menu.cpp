@@ -152,54 +152,21 @@ void Menu::oneVoneIHARD() {
     cout << "\n NursingHomes\n";
     showNursingHomes();
     cout << "\nSelect NursingHomes by ID: ";
-    int nsID;
-    cin >> nsID;
+    int nhID;
+    cin >> nhID;
     cin.clear();
-    NursingHome * ns = emeritaHealth.nursingHome[nsID];
 
+    NursingHome * nh = emeritaHealth.nursingHome[nhID];
 
-    HealthStation * hs;
+    Vehicle * v = emeritaHealth.nearVehicle(nh->getMapPoint(), 1);
 
-    vector<Vehicle*> vehiclesWithPath;
-    vector<vector<Vertex<MapPoint> * >> vehiclesPath;
+    HealthStation * hs = emeritaHealth.nearHealthStation(nh->getMapPoint(), 1);
 
-    vector<HealthStation*> healthWithPath;
-    vector<vector<Vertex<MapPoint> * >> healthPath;
+    vector<Vertex<MapPoint> *> result = emeritaHealth.oneVehicleOneItineration(v,hs, nh, 0);
+    vector<vector<Vertex<MapPoint>*>> path;
+    path.push_back(result);
 
-    vector<Vertex<MapPoint> * > path;
-
-    for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
-        path = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[i], hs, ns, 1);
-        if(path.size() > 0) {
-            vehiclesPath.push_back(path);
-            vehiclesWithPath.push_back(emeritaHealth.vehicles[i]);
-        }
-
-    }
-    cout << "\nListing Vehicles with path: ";
-    for(unsigned int j = 0; j < vehiclesWithPath.size(); j++) {
-        cout << "ID: "<< j;
-        vehiclesWithPath[j]->print();
-    }
-
-    /*
-    for(unsigned int k = 0; k < emeritaHealth.healthCareLocation.size(); k++) {
-        if(k == 2) continue;
-        cout << "\nBEFOREBOOM: " << k << endl;
-        path = emeritaHealth.oneVehicleOneItineration(emeritaHealth.vehicles[0], emeritaHealth.healthCareLocation[k], ns, 2);
-        if(path.size() > 0) {
-            healthPath.push_back(path);
-            healthWithPath.push_back(emeritaHealth.healthCareLocation[k]);
-        }
-
-    }
-
-    cout << "\nListing HealthStation with path: ";
-    for(unsigned int j = 0; j < healthWithPath.size(); j++) {
-        cout << "ID: "<< j;
-        healthWithPath[j]->print();
-    }*/
-
+    drawGraphFromFile("Emergency", 4444, path);
 
 }
 
