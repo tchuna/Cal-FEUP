@@ -17,9 +17,6 @@ template <class T> class Edge;
 template <class T> class Graph;
 template <class T> class Vertex;
 
-const int NOT_VISITED = 0;
-const int BEING_VISITED = 1;
-const int DONE_VISITED = 2;
 const int INT_INFINITY = INT_MAX;
 
 
@@ -52,20 +49,12 @@ public:
 
 	T getInfo() const;
 	void setInfo(T info);
-
 	int getDist() const;
 	int getIndegree() const;
-
 	bool operator<(const Vertex<T> vertex);
-
 	Vertex* path;
-
 	vector<Edge<T>  > getAdj() const;
 
-
-
-	int getX() {return this->x;};
-	int getY() {return this->y;};
 };
 template <class T>
 vector<Edge<T> > Vertex<T>::getAdj() const{
@@ -82,12 +71,12 @@ struct vertex_greater_than {
 template <class T>
 bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
     d->indegree--;
-    for (auto i = adj.begin(); i != adj.end(); i++){//iterate adjacent of current
-        if (i->dest = d) {//if one of the adjacent is
+    for (auto i = adj.begin(); i != adj.end(); i++){
+        if (i->dest = d) {
             for (typename vector<Vertex<T>* >::iterator vit = i->dest->in.begin(); vit != i->dest->in.end(); vit++) {//remove from the "in"
                 if ((*vit) == this) {
                     i->dest->in.erase(vit);
-                    adj.erase(i);//only delete it afterwards
+                    adj.erase(i);
                     return true;
                 }
             }
@@ -96,34 +85,12 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
     }
     return false;
 }
-/*template <class T>
-bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
-	d->indegree--;
-	typename vector<Edge<T> >::iterator it= adj.begin();
-	typename vector<Edge<T> >::iterator ite= adj.end();
-	while (it!=ite) {
-		if (it->dest == d) {
-			adj.erase(it);
-			return true;
-		}
-		else it++;
-	}
-	return false;
-}*/
 
 
 template <class T>
 Vertex<T>::Vertex(T in): info(in), visited(false), processing(false), indegree(0), dist(0) {
 	path = NULL;
 }
-
-/*template <class T>
-void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
-    Edge<T> edgeD(dest, this->info.distance(dest->info));//requires the template to have a distance method, this->info.distance(dest->info)
-    //edgeD.dest->in++;// updates the number of vertexes going into the destination Vertex
-    edgeD.dest->in.push_back(this);//Adds this vertex to the vector of vertexes going into the new one
-    adj.push_back(edgeD);
-}*/
 
 template <class T>
 void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
@@ -172,10 +139,10 @@ public:
     vector<Vertex<T> *> hidden;
     static Edge<T> mergeEdges(Edge<T> left, Edge<T> right, Vertex<T> * removedVertex);
 };
+
 template<class T>
 Edge<T> Edge<T>::mergeEdges(Edge<T> left, Edge<T> right, Vertex<T> * removedVertex) {
     Edge<T> res = Edge<T>(right.dest, left.weight + right.weight);
-    //add the hidden vertexes by the correct order, from left to right
     for (auto v : left.hidden)
         res.hidden.push_back(v);
     res.hidden.push_back(removedVertex);
@@ -221,21 +188,15 @@ public:
 	bool removeEdge(const T &sourc, const T &dest);
 	vector<T> dfs() const;
 	vector<T> bfs(Vertex<T> *v) const;
-	int maxNewChildren(Vertex<T> *v, T &inf) const;
 	vector<Vertex<T> * > getVertexSet() const;
 	int getNumVertex() const;
-    pair<Vertex<T> *, Vertex<T> *> getTwoVertexs(const T &sourc, const T &dest);
     Vertex<T> * operator()(int n);
 	Vertex<T>* getVertex(const T &v) const;
 	void resetIndegrees();
 	vector<Vertex<T>*> getSources() const;
     bool connectivity();
 	int getNumCycles();
-	vector<T> topologicalOrder();
 	vector<T> getPath(const T &origin, const T &dest);
-	void unweightedShortestPath(const T &v);
-	bool isDAG();
-	void bellmanFordShortestPath(const T &s);
 	void dijkstraShortestPath(const T &s);
 	void floydWarshallShortestPath();
 	int edgeCost(int vOrigIndex, int vDestIndex);
@@ -270,7 +231,6 @@ Graph<T> * Graph<T>::preProcessGraph() {
     int countRedundantNotFixed = 0;
     for (auto v : vertexSet) {
         if (v->adj.size() == 1 && v->in.size() == 1) {
-            cout << "---->REDUNDANT NODE: " <<endl; v->getInfo().print();
             countRedundantNotFixed++;
             Edge<T> enter = Edge<T>(nullptr, 0);
             bool found = false;
@@ -306,7 +266,7 @@ Graph<T> * Graph<T>::preProcessGraph() {
                 resultGraph->addVertexPointer(v);
         }
 
-    cout << "Done(" << countRedundant << " Redundant Nodes, "<< countRedundantNotFixed  <<" Found)" << endl;
+    cout << "End PreProcessing Graph(" << countRedundant << " Redundant Nodes, "<< countRedundantNotFixed  <<" Found)" << endl;
     return resultGraph;
 }
 
@@ -326,10 +286,6 @@ int Graph<T>::getNumCycles() {
 	return this->numCycles;
 }
 
-template <class T>
-bool Graph<T>::isDAG() {
-	return (getNumCycles() == 0);
-}
 
 template <class T>
 bool Graph<T>::addVertex(const T &in) {
@@ -412,25 +368,6 @@ bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
 }
 
 template <class T>
-pair<Vertex<T>*, Vertex<T>*> Graph<T>::getTwoVertexs(const T & sourc, const T & dest) {
-    typename vector<Vertex<T>*>::iterator it = vertexSet.begin();
-    typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
-    int found = 0;
-    Vertex<T> *vS = nullptr, *vD = nullptr;
-    while (found != 2 && it != ite) {
-        if ((*it)->info == sourc)
-        {vS=*it; found++;}
-        if ((*it)->info == dest)
-        {vD=*it; found++;}
-        it++;
-    }
-    if (found != 2)
-        cout << "getTwoVertexes failed" << endl;
-    return pair<Vertex<T>*, Vertex<T>*>(vS, vD);
-}
-
-
-template <class T>
 vector<T> Graph<T>::dfs() const {
 	typename vector<Vertex<T>*>::const_iterator it= vertexSet.begin();
 	typename vector<Vertex<T>*>::const_iterator ite= vertexSet.end();
@@ -501,42 +438,6 @@ bool Graph<T>::connectivity() {
     } else
         return true;
 }
-template <class T>
-int Graph<T>::maxNewChildren(Vertex<T> *v, T &inf) const {
-	vector<T> res;
-	queue<Vertex<T> *> q;
-	queue<int> level;
-	int maxChildren=0;
-	inf =v->info;
-	q.push(v);
-	level.push(0);
-	v->visited = true;
-	while (!q.empty()) {
-		Vertex<T> *v1 = q.front();
-		q.pop();
-		res.push_back(v1->info);
-		int l=level.front();
-		level.pop(); l++;
-		int nChildren=0;
-		typename vector<Edge<T> >::iterator it=v1->adj.begin();
-		typename vector<Edge<T> >::iterator ite=v1->adj.end();
-		for (; it!=ite; it++) {
-			Vertex<T> *d = it->dest;
-			if (d->visited==false) {
-				d->visited=true;
-				q.push(d);
-				level.push(l);
-				nChildren++;
-			}
-		}
-		if (nChildren>maxChildren) {
-			maxChildren=nChildren;
-			inf = v1->info;
-		}
-	}
-	return maxChildren;
-}
-
 
 template <class T>
 Vertex<T>* Graph<T>::getVertex(const T &v) const {
@@ -596,45 +497,6 @@ void Graph<T>::dfsVisit(Vertex<T> *v) {
 	}
 	v->processing = false;
 }
-
-template<class T>
-vector<T> Graph<T>::topologicalOrder() {
-	vector<T> res;
-	if( getNumCycles() > 0 ) {
-		cout << "Ordenacao Impossivel!" << endl;
-		return res;
-	}
-	this->resetIndegrees();
-
-	queue<Vertex<T>*> q;
-
-	vector<Vertex<T>*> sources = getSources();
-	while( !sources.empty() ) {
-		q.push( sources.back() );
-		sources.pop_back();
-	}
-
-	while( !q.empty() ) {
-		Vertex<T>* v = q.front();
-		q.pop();
-
-		res.push_back(v->info);
-
-		for(unsigned int i = 0; i < v->adj.size(); i++) {
-			v->adj[i].dest->indegree--;
-			if( v->adj[i].dest->indegree == 0) q.push( v->adj[i].dest );
-		}
-	}
-
-	if ( res.size() != vertexSet.size() ) {
-		while( !res.empty() ) res.pop_back();
-	}
-
-	this->resetIndegrees();
-
-	return res;
-}
-
 
 
 template<class T>
@@ -714,62 +576,6 @@ void Graph<T>::getfloydWarshallPathAux(int index1, int index2, vector<Vertex<T> 
 		getfloydWarshallPathAux(P[index1][index2],index2, res);
 	}
 }
-
-
-template<class T>
-void Graph<T>::unweightedShortestPath(const T &s) {
-
-	for(unsigned int i = 0; i < vertexSet.size(); i++) {
-		vertexSet[i]->path = NULL;
-		vertexSet[i]->dist = INT_INFINITY;
-	}
-
-	Vertex<T>* v = getVertex(s);
-	v->dist = 0;
-	queue< Vertex<T>* > q;
-	q.push(v);
-
-	while( !q.empty() ) {
-		v = q.front(); q.pop();
-		for(unsigned int i = 0; i < v->adj.size(); i++) {
-			Vertex<T>* w = v->adj[i].dest;
-			if( w->dist == INT_INFINITY ) {
-				w->dist = v->dist + 1;
-				w->path = v;
-				q.push(w);
-			}
-		}
-	}
-}
-
-
-template<class T>
-void Graph<T>::bellmanFordShortestPath(const T &s) {
-
-	for(unsigned int i = 0; i < vertexSet.size(); i++) {
-		vertexSet[i]->path = NULL;
-		vertexSet[i]->dist = INT_INFINITY;
-	}
-
-	Vertex<T>* v = getVertex(s);
-	v->dist = 0;
-	queue< Vertex<T>* > q;
-	q.push(v);
-
-	while( !q.empty() ) {
-		v = q.front(); q.pop();
-		for(unsigned int i = 0; i < v->adj.size(); i++) {
-			Vertex<T>* w = v->adj[i].dest;
-			if(v->dist + v->adj[i].weight < w->dist) {
-				w->dist = v->dist + v->adj[i].weight;
-				w->path = v;
-				q.push(w);
-			}
-		}
-	}
-}
-
-
 
 
 
