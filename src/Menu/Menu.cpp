@@ -104,16 +104,18 @@ void Menu::showVehicles(int show, vector<Vehicle *> vehicles){
             vehicles[i]->getMapPoint().print();
         }
         else if(show == 1)  {
-            if(vehicles[i]->getVehicleType() == 1)
+            if(vehicles[i]->getVehicleType() == 1) {
                 cout << i <<" - Vehicle ID: "<< vehicles[i]->getMapPoint().getID();
                 cout << "   Type: Ambulance   Point: ";
-            vehicles[i]->getMapPoint().print();
+                vehicles[i]->getMapPoint().print();
+            }
         }
         else if(show == 2)  {
-            if(vehicles[i]->getVehicleType() == 0)
+            if(vehicles[i]->getVehicleType() == 0){
                 cout << i <<" - Vehicle ID: "<< vehicles[i]->getMapPoint().getID();
-            cout << "   Type: Normal   Point: ";
-            vehicles[i]->getMapPoint().print();
+                cout << "   Type: Normal   Point: ";
+                vehicles[i]->getMapPoint().print();
+            }
         }
     }
 }
@@ -128,28 +130,28 @@ void Menu::showNursingHomes(){
 }
 
 void Menu::showHealthCareLocations(int show, vector<HealthStation *> hs){
-    for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
+    for(unsigned int i = 0; i < hs.size(); i++) {
         if(show == 0) {
-            cout << i << " - HealthCare ID: " << emeritaHealth.healthCareLocation[i]->getMapPoint().getID();
-            if(emeritaHealth.healthCareLocation[i]->getType() == 1)
+            cout << i << " - HealthCare ID: " << hs[i]->getMapPoint().getID();
+            if(hs[i]->getType() == 1)
                 cout << "   Type: Hospital   Point: ";
             else
                 cout << "   Type: HealthCenter   Point: ";
-            emeritaHealth.healthCareLocation[i]->getMapPoint().print();
+            hs[i]->getMapPoint().print();
         }
         else if(show == 1) {
-            if(emeritaHealth.healthCareLocation[i]->getType() == 1) {
-                cout << i << " - HealthCare ID: " << emeritaHealth.healthCareLocation[i]->getMapPoint().getID();
+            if(hs[i]->getType() == 1) {
+                cout << i << " - HealthCare ID: " << hs[i]->getMapPoint().getID();
                 cout << "   Type: Hospital   Point: ";
-                emeritaHealth.healthCareLocation[i]->getMapPoint().print();
+                hs[i]->getMapPoint().print();
             }
         }
         else if(show == 2) {
 
-            if(emeritaHealth.healthCareLocation[i]->getType() == 0){
-                cout << i << " - HealthCare ID: " << emeritaHealth.healthCareLocation[i]->getMapPoint().getID();
+            if(hs[i]->getType() == 0){
+                cout << i << " - HealthCare ID: " << hs[i]->getMapPoint().getID();
                 cout << "   Type: HealthCenter   Point: ";
-                emeritaHealth.healthCareLocation[i]->getMapPoint().print();
+                hs[i]->getMapPoint().print();
             }
         }
     }
@@ -281,16 +283,29 @@ void Menu::oneVoneI() {
 }
 
 void Menu::oneVmulI() {
+    vector<Vehicle *> normalvehicles;
+    vector<HealthStation *> healthCenter;
+
+    for(unsigned int i = 0; i < emeritaHealth.vehicles.size(); i++) {
+        if(emeritaHealth.vehicles[i]->getVehicleType() == 0)
+            normalvehicles.push_back(emeritaHealth.vehicles[i]);
+    }
 
     cout << "\n\nOne Vehicle One iteneration\n\n";
-    showVehicles(0, emeritaHealth.vehicles);
-    cout << "\nSelect vehicle by ID: ";
+    showVehicles(2, normalvehicles);
+    cout << "\nSelect vehicle: ";
     int vID;
     cin >> vID;
 
+    for(unsigned int i = 0; i < emeritaHealth.healthCareLocation.size(); i++) {
+        if(emeritaHealth.healthCareLocation[i]->getType() == 0)
+            healthCenter.push_back(emeritaHealth.healthCareLocation[i]);
+    }
+    cout << "healthcares size: " << healthCenter.size() << " original: " << emeritaHealth.healthCareLocation.size() << endl;
+
     cout << "\n HealhStationsn\n";
-    showHealthCareLocations(0, emeritaHealth.healthCareLocation);
-    cout << "\nSelect vehicle by ID: ";
+    showHealthCareLocations(2, healthCenter);
+    cout << "\nSelect HealthCenter: ";
     int hsID;
     cin >> hsID;
 
