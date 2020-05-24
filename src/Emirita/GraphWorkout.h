@@ -60,10 +60,15 @@ public:
 
     bool checkVertexInGraph(unsigned long long id);
 
+    Vehicle* nearVehicle(MapPoint node,int type);
+
     vector<unsigned long long> getNursingHomesID();
 
-    vector<unsigned long long> getHealthStationID();
+    vector<unsigned long long> getUrgentHealthID();
 
+    vector<unsigned long long> getNormalHealthID();
+
+    vector<unsigned long long> getVehiclesID();
 };
 
 

@@ -250,11 +250,11 @@ vector<Vehicle*> ReadFiles::loadVehicles() {
 
         getline(linestream,st,',');
         st.erase(remove(st.begin(), st.end(), ')'), st.end());
-        int cap = atoi(st.c_str());
+        int type = atoi(st.c_str());
 
         getline(linestream,st,',');
         st.erase(remove(st.begin(), st.end(), ')'), st.end());
-        int type = atoi(st.c_str());
+        int cap = atoi(st.c_str());
 
         Vehicle* vehicle = new Vehicle(cap,type,*trt);
 
