@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/elgner/Desktop/cal/src/GraphViewer -I/home/elgner/Desktop/cal/files 
+CXX_INCLUDES = -I"/home/gg/Desktop/FINAL CAL CAL/cal/src/GraphViewer" -I"/home/gg/Desktop/FINAL CAL CAL/cal/files" 
 

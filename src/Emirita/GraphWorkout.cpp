@@ -16,7 +16,7 @@ void GraphWorkout::loadGraph(){
 
 
 }
-
+//Calculate distance between 2 points
 double GraphWorkout::distanceTwoPointsOnMap(unsigned long pointX1, unsigned long pointY1,unsigned long pointX2, unsigned long pointY2){
 
     pair<double,double> distance = make_pair(pointX2 - pointX1 ,pointY2 - pointY1 );
@@ -25,7 +25,7 @@ double GraphWorkout::distanceTwoPointsOnMap(unsigned long pointX1, unsigned long
 
 }
 
-
+//constractu graph to be used
 Graph<MapPoint> *  GraphWorkout::constructGraph(){
     loadGraph();
     double x1,x2,y1,y2, dist;
@@ -72,14 +72,14 @@ Graph<MapPoint> *  GraphWorkout::constructGraph(){
     }
 }
 
-
+//load data from file
 bool  GraphWorkout::addData(){
     ReadFiles file;
     data=file.loadTags();
 
 
 }
-
+//load vehicles from file
 bool  GraphWorkout::addVehicles(){
     ReadFiles file;
     vehicles =file.loadVehicles();
@@ -92,7 +92,7 @@ bool  GraphWorkout::addVehicles(){
     }
     vehicles = result;
 }
-
+//load nursinghome from files
 bool  GraphWorkout::addNursingHome(){
 
 
@@ -116,7 +116,7 @@ bool  GraphWorkout::addNursingHome(){
 }
 
 
-
+//add healthstation from files
 bool  GraphWorkout::addHealthStation(){
 
 
@@ -155,7 +155,7 @@ bool  GraphWorkout::addHealthStation(){
     }
 
 }
-
+//get the nearest vehicle from point
 Vehicle* GraphWorkout::nearVehicle(MapPoint node,int type) {
 
     int distMinim = INT_MAX;
@@ -181,7 +181,7 @@ Vehicle* GraphWorkout::nearVehicle(MapPoint node,int type) {
     return vehicles[nodePosition];
 
 }
-
+//get the nearest healthstation from point
 HealthStation* GraphWorkout::nearHealthStation(MapPoint node,int type) {
 
     int distMinim = INT_MAX;
@@ -204,7 +204,7 @@ HealthStation* GraphWorkout::nearHealthStation(MapPoint node,int type) {
     return healthCareLocation[nodePosition];
 
 }
-
+//get the nearest nursinghome from point
 NursingHome* GraphWorkout::nearNursingHome(MapPoint node) {
     int distMinim = INT_MAX;
     int nodePosition = -1;
@@ -275,7 +275,7 @@ vector<MapPoint> GraphWorkout::findPath(MapPoint source, MapPoint dest ,int type
 }
 
 
-
+//calculate optimal path between points (vehicles, nursinghome, healthcare)
 vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v , HealthStation * healthCare , NursingHome * nr, int type){ // nr = nursingHme[0]
     //type 0 = both
     //type 1 = vehicle to nursehome
@@ -312,7 +312,7 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleOneItineration(Vehicle * v 
 
 }
 
-
+//calculare path from vehicle to multiples nursinghomes then healthstation
 vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration(Vehicle * v){
     vector<Vertex<MapPoint> * > result, temp;
 
@@ -364,7 +364,7 @@ vector<Vertex<MapPoint> * >  GraphWorkout::oneVehicleMultipleItineration(Vehicle
     return result;
 }
 
-
+//calculate path of multiples vehicles to multiple points
 vector<vector<Vertex<MapPoint>*>> GraphWorkout:: multipleVehicleMultipleItineration() {
     vector<vector<Vertex<MapPoint>*>> result;
     vector<Vertex<MapPoint>*> temp;
@@ -381,7 +381,7 @@ vector<vector<Vertex<MapPoint>*>> GraphWorkout:: multipleVehicleMultipleItinerat
 
     return result;
 }
-
+//calculate distance between 2 health locations
 void  GraphWorkout::distBetHealthLocation(int vertexPos, bool isSort){
     Vertex<MapPoint> * tempVertex;
     for (auto nursinghome : nursingHome) {

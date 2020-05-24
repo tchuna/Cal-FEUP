@@ -8,44 +8,44 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/elgner/Desktop/cal/cmake-build-debug"/>
+				<Option working_dir="/home/gg/Desktop/FINAL CAL CAL/cal/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/elgner/Desktop/cal/cmake-build-debug"/>
+				<Option working_dir="/home/gg/Desktop/FINAL CAL CAL/cal/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/elgner/Desktop/cal/cmake-build-debug"/>
+				<Option working_dir="/home/gg/Desktop/FINAL CAL CAL/cal/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="cal">
-				<Option output="/home/elgner/Desktop/cal/cmake-build-debug/cal" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/elgner/Desktop/cal/cmake-build-debug"/>
+				<Option output="/home/gg/Desktop/FINAL CAL CAL/cal/cmake-build-debug/cal" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/gg/Desktop/FINAL CAL CAL/cal/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/elgner/Desktop/cal/src/GraphViewer"/>
-					<Add directory="/home/elgner/Desktop/cal/files"/>
+					<Add directory="/home/gg/Desktop/FINAL CAL CAL/cal/src/GraphViewer"/>
+					<Add directory="/home/gg/Desktop/FINAL CAL CAL/cal/files"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -56,21 +56,21 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 cal"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 cal"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="cal/fast">
-				<Option output="/home/elgner/Desktop/cal/cmake-build-debug/cal" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/elgner/Desktop/cal/cmake-build-debug"/>
+				<Option output="/home/gg/Desktop/FINAL CAL CAL/cal/cmake-build-debug/cal" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/gg/Desktop/FINAL CAL CAL/cal/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/elgner/Desktop/cal/src/GraphViewer"/>
-					<Add directory="/home/elgner/Desktop/cal/files"/>
+					<Add directory="/home/gg/Desktop/FINAL CAL CAL/cal/src/GraphViewer"/>
+					<Add directory="/home/gg/Desktop/FINAL CAL CAL/cal/files"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -81,83 +81,83 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 cal/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/elgner/Desktop/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 cal/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/gg/Desktop/FINAL\ CAL\ CAL/cal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/elgner/Desktop/cal/src/Emirita/Elderly.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Emirita/Elderly.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Emirita/Elderly.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Emirita/Elderly.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Emirita/GraphWorkout.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Emirita/GraphWorkout.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Emirita/GraphWorkout.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Emirita/GraphWorkout.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Emirita/HealthStation.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Emirita/HealthStation.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Emirita/HealthStation.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Emirita/HealthStation.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Emirita/NursingHome.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Emirita/NursingHome.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Emirita/NursingHome.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Emirita/NursingHome.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Emirita/Vehicle.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Emirita/Vehicle.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Emirita/Vehicle.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Emirita/Vehicle.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/GraphViewer/connection.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/GraphViewer/connection.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/GraphViewer/connection.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/GraphViewer/connection.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/GraphViewer/graphviewer.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/GraphViewer/graphviewer.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/GraphViewer/graphviewer.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/GraphViewer/graphviewer.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Map/ConnectPoints.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Map/ConnectPoints.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Map/ConnectPoints.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Map/ConnectPoints.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Map/MapPoint.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Map/MapPoint.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Map/MapPoint.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Map/MapPoint.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Menu/Menu.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Menu/Menu.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Menu/Menu.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Menu/Menu.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Utilities/ReadFiles.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Utilities/ReadFiles.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/Utilities/ReadFiles.h">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/Utilities/ReadFiles.h">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/src/main.cpp">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/src/main.cpp">
 			<Option target="cal"/>
 		</Unit>
-		<Unit filename="/home/elgner/Desktop/cal/CMakeLists.txt">
+		<Unit filename="/home/gg/Desktop/FINAL CAL CAL/cal/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
